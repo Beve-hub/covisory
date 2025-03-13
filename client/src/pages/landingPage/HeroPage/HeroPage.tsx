@@ -19,7 +19,7 @@ const HeroPage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 60000); // Change image every 1 minute
+    }, 60000/2); // Change image every 1 minute
     return () => clearInterval(interval);
   }, []);
 
@@ -28,12 +28,13 @@ const HeroPage = () => {
       className="h-screen w-screen flex items-center justify-center px-10 bg-cover bg-center transition-all duration-1000 relative"
       style={{ backgroundImage: `url(${images[currentIndex].src})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }}
     >
-      <div className="absolute inset-0 bg-black opacity-40"></div>
+      <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="relative z-10 flex flex-col items-center justify-center text-white text-center max-w-2xl">
         <h1 className="text-3xl font-bold md:text-4xl">{images[currentIndex].text}</h1>
         <p className="text-xl md:text-2xl font-normal mt-4">{images[currentIndex].fix}</p>
         <div className="flex items-center justify-center gap-4 mt-6">
-          <button className="text-[#121212] bg-[#071e63] rounded-md flex items-center gap-2 md:text-xl text-center py-2 px-4 " onClick={() => navigate('/login')}>{images[currentIndex].bug} <RiArrowRightDoubleLine /></button>
+          <button className="text-[--text-white] bg-[#071e63] rounded-md flex items-center gap-2 md:text-xl text-center py-2 px-4 " onClick={() => navigate('/login')}
+          >{images[currentIndex].bug} <RiArrowRightDoubleLine /></button>
           <p
             onClick={() => setIsModalOpen(true)}
             className="flex items-center gap-2 md:text-xl text-center  text-white cursor-pointer rounded-md"

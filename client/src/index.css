@@ -9,12 +9,19 @@
   background-color: #242424;
 
   --text-white: #ffff;
+  --bg-white: #F5F5F5;
   --text-black: #121212;
+  --light-black: #3c3b3b;
   --button-color: #FFC700;
   --primary-color: #6a0101; 
+  --primary-light:#6a010130;
+  --gray-color: #797676;
+  --light-gray: #e4e3e3bd;
   --secondary-color: #071e63; 
-  --tertiary-color: #f5f5f5; 
-  --logo-text: #009ff5; /* Missing semicolon fixed */
+  --tertiary-color: #dbe4f2; 
+  --logo-text: #009ff5;
+  --light-logo: #bfc6ee38;
+  --transparent-white: #ffffff6b;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -43,8 +50,9 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
-
+p {
+  line-height: 1.8;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

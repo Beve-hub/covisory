@@ -54,10 +54,10 @@ const Navbar = () => {
 
   return (
     <div 
-    className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scroll ? "bg-white shadow-md" : "bg-transparent"}`}
+    className={`fixed top-0 left-0 right-0 z-50 transition-all shadow duration-300 ${scroll ? "bg-white shadow-md" : "bg-transparent"}`}
   >
       {/* Top Bar with Language and Location */}
-      <div className={`border-b-2 py-4 text-sm flex justify-between items-center px-4 md:px-8 lg:px-16 ${scroll ? "hidden" : "border-white"}`}
+      <div className={`border-b-[0.5px] py-4 text-sm flex justify-between items-center px-4 md:px-8 lg:px-16 ${scroll ? "hidden" : "border-white"}`}
            style={{ borderColor: scroll ? "var(--secondary-color)" : "var(--text-white)" }}>
             <div className="flex items-center space-x-2">
         <FaLocationDot color={scroll ? "var(--secondary-color)" : "var(--text-white)" } />
@@ -135,11 +135,13 @@ const Navbar = () => {
           <button className="px-4 py-2 rounded-md "
            style={{ 
            color: scroll ? "var(--text-white)" : "var(--secondary-color)",
-            backgroundColor: scroll ? "var(--secondary-color)" : "var(--text-white)" }}
+            backgroundColor: scroll ? "var(--primary-color)" : "var(--text-white)" }}
           >GET STARTED</button>
         </div>
 
-        <div className="md:hidden" onClick={() => setNavOpen(!navOpen)}>
+        <div className="md:hidden " onClick={() => setNavOpen(!navOpen)}
+        style={{ backgroundColor: scroll ? "var(--text-color)" : "var(--text-white)", padding:'10px', borderRadius: '30px' }}
+          >
           <img src={navOpen ? cancel : menu} alt="Menu" className="w-8 h-8" />
         </div>
       </div>
