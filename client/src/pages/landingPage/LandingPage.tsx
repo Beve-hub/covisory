@@ -5,7 +5,11 @@ import Choose from './HeroPage/Choose';
 import Grow from './HeroPage/Grow';
 import HeroPage from './HeroPage/HeroPage';
 import Services from './HeroPage/Services';
-import Testimonia from './HeroPage/Testimonia';
+import Slide from './HeroPage/Slide';
+import TestimonialCard from './HeroPage/Testimonia';
+import Views from './HeroPage/Views';
+
+
 
 const LandingPage = () => {
   return (
@@ -16,7 +20,9 @@ const LandingPage = () => {
         <Grow/>
         <Choose/>
         <Services/>
-        <Testimonia/>
+        <Slide/>
+        <TestimonialCard/>
+        <Views/>
     </>
   )
 }

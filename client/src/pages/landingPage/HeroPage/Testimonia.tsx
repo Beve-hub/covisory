@@ -29,66 +29,62 @@ const testimonials = [
   },
 ];
 
-const Testimonia = () => {
+const TestimonialCard = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1));
-    }, 5000); // Auto-slide every 5 seconds
-
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
-
-
   return (
-    <section className="bg-[var(--secondary-color)] flex flex-col items-center justify-center min-h-[60vh] p-6 text-center relative">
-      <div className="max-w-3xl mx-auto relative overflow-hidden h-80 w-full">
-        <div
-          className="flex transition-transform duration-700 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="w-full flex-shrink-0 text-center">
-              {/* Quote Icon */}
-              <p className="text-[var(--text-white)] text-3xl text-center flex justify-center">
-                <BiSolidQuoteRight />
-              </p>
+    <section className="flex bg-[var(--text-white)] items-center justify-center min-h-[70vh] py-12">
+      <div className="max-w-6xl grid grid-col-1 md:grid-cols-2 gap-10 items-center">
+      <div>
+    <p className="text-[var(--primary-color)] text-lg font-semibold">Clients Feedback</p>
+    <p className="text-[var(--text-black)] text-4xl font-bold">Our Client Reviews</p>
+    <p className="text-[var(--gray-color)] text-md text-balance mt-2">
+        We take pride in delivering outstanding service and ensuring customer satisfaction.  
+        Here’s what our valued clients have to say about their experience with us.  
+        Their feedback helps us grow and continue to improve our offerings.
+    </p>
+</div>
 
-              {/* Testimonial Text */}
-              <p className="text-lg italic text-[--text-white] px-4">''{testimonial.text}''</p>
 
-              {/* Image & Author */}
-              <div className="flex flex-col items-center mt-6">
-                <img
-                  src={testimonial.src}
-                  alt={testimonial.author}
-                  className="w-[4rem] h-[4rem] rounded-full object-cover border-4 border-gray-300 shadow-lg"
-                />
-                <p className="mt-2 text-lg font-semibold text-[var(--text-white)]">{testimonial.author}</p>
-              </div>
-            </div>
+      <div className="max-w-lg w-full bg-[var(--text-white)] shadow-lg p-4 sm:p-8 flex flex-col items-center text-center relative">
+        {/* Quote Icon */}
+        <p className="text-gray-600 text-3xl">
+          <BiSolidQuoteRight />
+        </p>
+        {/* Testimonial Text */}
+        <p className="text-gray-700 text-base sm:text-lg italic mt-4">''{testimonials[currentIndex].text}''</p>
+        {/* Image & Author */}
+        <div className="flex flex-col items-center mt-6">
+          <img
+            src={testimonials[currentIndex].src}
+            alt={testimonials[currentIndex].author}
+            className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-4 border-gray-300 shadow-md"
+          />
+          <p className="mt-3 text-lg font-semibold text-gray-800">{testimonials[currentIndex].author}</p>
+        </div>
+        {/* Indicator Dots */}
+        <div className="flex gap-2 mt-4">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`h-3 w-3 rounded-full transition-all ${
+                currentIndex === index ? "bg-blue-600 scale-125" : "bg-gray-400"
+              }`}
+            ></button>
           ))}
         </div>
       </div>
-
-   
-
-      {/* Indicator Dots */}
-      <div className="flex gap-2 mt-6">
-        {testimonials.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`h-3 w-3 rounded-full transition-all ${
-              currentIndex === index ? "bg-blue-600 scale-125" : "bg-gray-400"
-            }`}
-          ></button>
-        ))}
       </div>
     </section>
   );
 };
 
-export default Testimonia;
+export default TestimonialCard;

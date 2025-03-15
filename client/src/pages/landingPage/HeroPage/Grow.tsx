@@ -4,14 +4,14 @@ import IMG3 from "../../../assets/about1.jpg";
 
 const Grow = () => {
   return (
-    <section className="bg-[var(--seconday-color)] py-16 px-4 text-center md:text-left">
+    <section className="bg-[var(--secondary-color)] py-16 px-4 text-center md:text-left">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <div>
-          <h2 className="text-[var(--primary-color)] font-semibold">How to grow business</h2>
+          <h2 className="text-[var(--text-white)] font-semibold">How to grow business</h2>
           <h2 className="text-[var(--text-white)] py-4 text-5xl font-bold md:text-4xl">
             We grow your assets and investments
           </h2>
-          <p className="text-[var(--gray-color)]">
+          <p className="text-[var(--text-white)]">
             Our history, going back years, stems from the awareness that we are more than just a financial organization.
             <br />
             We are engaged members of our communities, worldwide business and philanthropic leaders, and mindful designers of innovative financial compensation and support programs.

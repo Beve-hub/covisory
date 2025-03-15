@@ -24,43 +24,46 @@ const images = [
   },
 ];
 
-
 const Services = () => {
   return (
-    <section className="bg-[var(--bg-white)] py-16 px-4 text-center md:text-left">
-       <div className="max-w-5xl mx-auto grid items-center">
-          <div className="grid justify-center items-center">
-          <p className="text-[var(--primary-color)] font-semibold text-lg text-center">Our Services</p>
-          <h2 className="text-[var(--text-black)] py-2 flex font-bold text-2xl md:text-xl sm:text-lg text-balance text-center items-center">Our Business group and Structured Finance statisticians power our investment strategies' generation of ideas and risk analysis.</h2>
-         </div>
+    <section className="bg-[var(--bg-white)] py-24 px-4 text-center md:text-left">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid justify-center items-center text-center">
+          <p className="text-[var(--primary-color)] font-semibold text-lg">Our Services</p>
+          <h2 className="text-[var(--text-black)] py-2 font-bold text-3xl md:text-2xl sm:text-xl leading-snug">
+            Our Business group and Structured Finance statisticians power our investment strategies' generation of ideas and risk analysis.
+          </h2>
+        </div>
 
-        <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 items-center p-5">
-        {images.map((item, index) => (
-        <div key={index} className="relative bg-white shadow-lg rounded-xl overflow-hidden p-5">
-          {/* Image with hover animation */}
-          <div className="overflow-hidden rounded-lg">
-            <img
-              src={item.src}
-              alt="card-img"
-              className="w-full h-56 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
-            />
-          </div>
-          {/* Text content */}
-          <div className="bg-white p-4">
-            <p className="font-semibold text-xl text-[var(--primary-color)]">{item.fix}</p>
-            <h2 className="font-bold text-2xl text-[var(--text-black)] mt-1">{item.bug}</h2>
-            <p className="text-[var(--gray-color)] mt-2 text-sm">{item.text}</p>
-          </div>
-          {/* Arrow icon */}
-          <div className="absolute right-5 bottom-5 text-xl text-gray-600">
-            <p className="bg-[var(--secondary-color)] text-[var(--text-white)] p-4 rounded-full"><FaArrowRightLong /></p>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 px-4 sm:px-0">
+          {images.map((item, index) => (
+            <div key={index} className="relative bg-white shadow-lg rounded-xl overflow-hidden transition-transform duration-300 hover:scale-105">
+              {/* Image with hover effect */}
+              <div className="overflow-hidden rounded-t-xl">
+                <img
+                  src={item.src}
+                  alt="card-img"
+                  className="w-full h-60 object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
+                />
+              </div>
+              {/* Text content */}
+              <div className="p-6">
+                <p className="font-semibold text-lg text-[var(--primary-color)]">{item.fix}</p>
+                <h2 className="font-bold text-xl text-[var(--text-black)] mt-1">{item.bug}</h2>
+                <p className="text-[var(--gray-color)] mt-2 text-sm leading-relaxed">{item.text}</p>
+              </div>
+              {/* Arrow icon */}
+              <div className="absolute right-4 bottom-4 text-xl text-gray-600">
+                <p className="bg-[var(--secondary-color)] text-[var(--text-white)] p-3 rounded-full">
+                  <FaArrowRightLong />
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-        </div>
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default Services
+export default Services;

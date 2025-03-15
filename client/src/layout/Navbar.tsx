@@ -11,24 +11,27 @@ const navLinks = [
     name: "About",
     path: "#",
     dropdown: [
-      { name: "Our OutLook", path: "/about/background" },
-      { name: "Finance", path: "/about/values" },
-      { name: "Our Perspective", path: "/about/values" },
+      { name: "Our Company", path: "/about/company" },
+      { name: "Our Perspective", path: "/about/perspective" },
+      { name: "Our Team", path: "/about/team" },
     ],
   },
   {
     name: "Methodology",
     path: "#",
     dropdown: [
-      { name: "ESG", path: "/about/background" },
-      { name: "AI Trading", path: "/about/values" },
-      { name: "Strategies", path: "/about/values" },
-      { name: "Diversity & Inclusion", path: "/about/values" },
+      { name: "ESG", path: "/enviroment" },
+      { name: "AI Trading", path: "/trade" },
+      { name: "Strategies", path: "/strategies" },
+      { name: "Diversity & Inclusion", path: "/diversity" },
     ],
   },
-  { name: "Investment", path: "/service" },
-  { name: "Forex", path: "/project/building" },
-  { name: "Contact", path: "/location" },
+  {
+    name: "Services",
+    path: "/services",
+    
+  },
+  { name: "Contact", path: "/contact" },
 ];
 
 const Navbar = () => {
@@ -85,7 +88,7 @@ const Navbar = () => {
           LOGO
         </NavLink>
 
-        <ul className="hidden md:flex space-x-8 items-center mx-auto"
+        <ul className="hidden md:flex space-x-14 items-center mx-auto"
             style={{ color: scroll ? "var(--secondary-color)" : "var(--text-white)" }}>
           {navLinks.map((link) => (
             <li
@@ -101,7 +104,7 @@ const Navbar = () => {
                     {link.name} <MdOutlineKeyboardArrowDown />
                   </span>
                   {dropdown === link.name && (
-                    <div className="absolute  bg-white shadow-lg p-2 w-[180px] rounded-md">
+                    <div className="absolute  bg-[var(--gray-color)] shadow-lg p-2 w-[180px] rounded-md">
                       <ul className="space-y-2"
                       >
                         {link.dropdown.map((item) => (
