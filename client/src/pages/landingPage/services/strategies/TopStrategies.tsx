@@ -2,7 +2,7 @@ import IMG from "../../../../assets/bg2.jpg";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 
-const TopTeam = () => {
+const TopStrategies = () => {
   return (
     <section 
         className="relative w-screen h-[25rem] grid items-center pt-16 pb-6 px-6 text-left md:text-left"
@@ -22,4 +22,4 @@ const TopTeam = () => {
   )
 }
 
-export default TopTeam
+export default TopStrategies

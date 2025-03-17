@@ -2,6 +2,7 @@ import Views from "../../HeroPage/Views"
 import BodyPers from "./BodyPers"
 import Discovery from "./Discovery"
 import Goal from "./Goal"
+import Mission from "./Mission"
 import TopPers from "./TopPers"
 
 const Perspect = () => {
@@ -11,6 +12,7 @@ const Perspect = () => {
         <Discovery/>
         <Goal/>
         <BodyPers/>
+        <Mission/>
         <Views/>
     </>
   )

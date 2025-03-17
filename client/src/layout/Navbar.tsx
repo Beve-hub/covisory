@@ -17,17 +17,27 @@ const navLinks = [
     ],
   },
   {
+    name: "Services",
+    path: "#",
+    dropdown: [
+      { name: "Investment", path: "/investment" },
+      { name: "Trading", path: "/trade" },
+      { name: "Strategies", path: "/strategy" },
+     
+    ],
+  },
+  {
     name: "Methodology",
     path: "#",
     dropdown: [
       { name: "ESG", path: "/enviroment" },
-      { name: "AI Trading", path: "/trade" },
-      { name: "Strategies", path: "/strategies" },
+      { name: "Forex", path: "/forex" },
       { name: "Diversity & Inclusion", path: "/diversity" },
     ],
   },
+  
   {
-    name: "Services",
+    
     path: "/services",
     
   },

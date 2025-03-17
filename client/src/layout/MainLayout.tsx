@@ -7,7 +7,7 @@ import AdminSidebar from "./AdminSidebar";
 
 const MainLayout = () => {
   const location = useLocation();
-  const showNavbar = ["/", "/landingPage","/about/company","/about/perspective","/about/team"].includes(location.pathname);
+  const showNavbar = ["/", "/landingPage","/about/company","/about/perspective","/about/team", "/member", "/investment","/strategy","/trade","/contact","/enviroment","/forex","/diversity"].includes(location.pathname);
   const showClientSidebar = ["/dashboard"].includes(location.pathname);
   const showAdminSidebar = ["/AdminDashboard"].includes(location.pathname);
 
