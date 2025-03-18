@@ -1,5 +1,4 @@
 import IMG from "../../../../assets/investment.jpg";
-import IMG2 from "../../../../assets/invest2.jpg";
 import { GiLaurelsTrophy } from "react-icons/gi";
 
 
