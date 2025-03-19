@@ -10,13 +10,13 @@ const Respond = () => {
         <div className="relative flex flex-col items-center md:items-start">
           <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
             <img
-              src={IMG1}
+              src={IMG2}
               alt="Partner"
               className="w-[20rem] h-[20rem] sm:h-[25rem] rounded-lg shadow-lg object-cover opacity-80 absolute -top-5 -left-5 hidden sm:block transition-transform duration-300 group-hover:scale-105"
             />
             <div className="relative sm:top-0 sm:left-0 lg:top-20 lg:left-[10rem] ">
               <img
-                src={IMG2}
+                src={IMG1}
                 alt="About"
                 className="w-[20rem] h-[20rem] object-cover sm:h-[25rem] rounded-lg relative z-10 transition-transform duration-300 group-hover:scale-105"
               />
