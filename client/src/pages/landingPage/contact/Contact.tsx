@@ -1,6 +1,16 @@
+import BodyContact from "./BodyContact"
+import MapContact from "./MapContact"
+import MessageContact from "./MessageContact"
+import TopContact from "./TopContact"
+
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <>
+    <TopContact/>
+      <BodyContact/>
+      <MapContact/>
+      <MessageContact/>
+    </>
   )
 }
 
