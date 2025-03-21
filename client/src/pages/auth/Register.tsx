@@ -37,8 +37,8 @@ const Register = () => {
       <div>
       <h2 className="text-2xl font-bold text-center text-gray-700 mb-4">Logo</h2>
       <div className="bg-white p-8 rounded-xl shadow-lg max-w-md w-full">
-        <h3 className="text-2xl text-center text-[var(--text-black)] font-bold mb-2">Login</h3>
-        <p className="text-md text-center text-[var(--gray-color)] mb-6">Enter your Username and password to access the dashboard.</p>
+        <h3 className="text-2xl text-center text-[var(--text-black)] font-bold mb-2">Register</h3>
+        <p className="text-md text-center text-[var(--gray-color)] mb-6">Create an account to gain access to panel.</p>
 
         <form className="w-full space-y-6">
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -112,13 +112,7 @@ const Register = () => {
             <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-1">
               Country
             </label>
-            <ReactFlagsSelect
-                selected={formData.country}
-                onSelect={handleCountrySelect}
-                searchable
-                searchPlaceholder="Search countries"
-                placeholder="Select Country"
-              />
+            
           </div>
 
        
@@ -169,6 +163,18 @@ const Register = () => {
           </div>
 
           </div>
+
+          <div className="">
+            
+            <div className="flex items-center gap-2">
+              <input
+                type='checkbox'
+               
+              />
+             <p className="text-[var(--text-black)]">I agree with <span >Privacy & Policy, Terms & Condition</span></p>
+            </div>
+          
+          </div>
           <button
             type="submit"
             className="w-full rounded-md bg-[var(--primary-color)] px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-[var(--secondary-color)] focus:ring-2 focus:ring-indigo-400 focus:outline-none"
@@ -176,7 +182,7 @@ const Register = () => {
             Login
           </button>
 
-          <p className="text-[var(--text-black)] text-center">New on our platform? <span className="text-[var(--secondary-color)] font-semibold cursor-pointer" onClick={() => navigate('/register')}>Create an account</span></p>
+          <p className="text-[var(--text-black)] text-center">Already have an account? <span className="text-[var(--secondary-color)] font-semibold cursor-pointer" onClick={() => navigate('/login')}>Register</span></p>
         </form>
       </div>
       </div>
