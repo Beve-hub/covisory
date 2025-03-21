@@ -14,6 +14,7 @@ import Contact from './pages/landingPage/contact/Contact';
 import Forex from './pages/landingPage/method/forex/Forex';
 import ESG from './pages/landingPage/method/ESG/ESG';
 import DI from './pages/landingPage/method/DI/DI';
+import Register from './pages/auth/Register';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
        <Route  path='/' element={<MainLayout />}>
        <Route index element={<LandingPage/>}/>
        <Route path='/login' element={<LoginUser/>}/>
+       <Route path='/register' element={<Register/>}/>
        <Route path='/about/company' element={<Company/>}/>
        <Route path='/about/perspective' element={<Perspect/>}/>
        <Route path='/about/team' element={<Team/>}/>

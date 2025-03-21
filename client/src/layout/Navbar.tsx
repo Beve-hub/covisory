@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import menu from "../assets/menu.svg";
 import cancel from "../assets/cancel.svg";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
@@ -50,6 +50,7 @@ const Navbar = () => {
   const [language, setLanguage] = useState("EN");
   const [scroll, setScroll] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (location.pathname.includes("/about")) setDropdown("about");
@@ -149,6 +150,8 @@ const Navbar = () => {
            style={{ 
            color: scroll ? "var(--text-white)" : "var(--secondary-color)",
             backgroundColor: scroll ? "var(--primary-color)" : "var(--text-white)" }}
+
+            onClick={() => navigate('/login')}
           >GET STARTED</button>
         </div>
 
