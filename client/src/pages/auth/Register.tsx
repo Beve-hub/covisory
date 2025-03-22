@@ -1,7 +1,8 @@
 import { useState } from "react";
-import ReactFlagsSelect from "react-flags-select";
+import ReactFlagsSelect from 'react-flags-select';
 import { MdLockOpen, MdLockOutline } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import "react-country-state-city/dist/react-country-state-city.css";
 
 interface Errors {
   firstName?: string;
@@ -32,6 +33,17 @@ const Register = () => {
     setFormData({ ...formData, country: countryCode });
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+    }));
+};
+
+const handleSubmit = () => {
+  navigate('/dashboard')
+}
   return (
     <section className="flex items-center justify-center w-screen h-screen p-4 bg-[var(--primary-color)]">
       <div>
@@ -112,7 +124,8 @@ const Register = () => {
             <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-1">
               Country
             </label>
-            
+           
+
           </div>
 
        
@@ -145,8 +158,8 @@ const Register = () => {
             </label>
             <div className="relative">
               <input
-                id="password"
-                name="password"
+                id="confirmPassword"
+                name="confirmPassword"
                 type={showPassword ? "text" : "password"}
                 className="w-full rounded-md border border-gray-300 px-3 py-2 text-base text-[var(--text-black)] bg-[var(--text-white)] placeholder-gray-400  focus:ring-2 focus:ring-[var(--primary-color)] focus:border-[var(--primary-color)] pr-10"
                 placeholder="Enter your password"
@@ -166,22 +179,23 @@ const Register = () => {
 
           <div className="">
             
-            <div className="flex items-center gap-2">
-              <input
-                type='checkbox'
-               
-              />
-             <p className="text-[var(--text-black)]">I agree with <span >Privacy & Policy, Terms & Condition</span></p>
-            </div>
-          
+           
           </div>
           <button
             type="submit"
             className="w-full rounded-md bg-[var(--primary-color)] px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-[var(--secondary-color)] focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+            onClick={handleSubmit}
           >
-            Login
+            Register
           </button>
-
+          <div className="flex items-center gap-2">
+              <input
+                type='checkbox'
+               
+              />
+             <p className="text-[var(--text-black)] text-sm">I agree with <span className="text-[var(--logo-color)]">Privacy & Policy, Terms & Condition</span></p>
+            </div>
+          
           <p className="text-[var(--text-black)] text-center">Already have an account? <span className="text-[var(--secondary-color)] font-semibold cursor-pointer" onClick={() => navigate('/login')}>Register</span></p>
         </form>
       </div>

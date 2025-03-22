@@ -1,9 +1,9 @@
 
 
-const Invest = () => {
+const Package = () => {
   return (
     <div>Invest</div>
   )
 }
 
-export default Invest
+export default Package

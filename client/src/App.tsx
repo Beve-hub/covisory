@@ -15,6 +15,13 @@ import Forex from './pages/landingPage/method/forex/Forex';
 import ESG from './pages/landingPage/method/ESG/ESG';
 import DI from './pages/landingPage/method/DI/DI';
 import Register from './pages/auth/Register';
+import Dashboard from './pages/dashboard/dashboard/Dashboard';
+import Deposit from './pages/dashboard/action/Deposit';
+import Referral from './pages/dashboard/action/Referral';
+import Transaction from './pages/dashboard/transaction/Transaction';
+import Withdraw from './pages/dashboard/action/Withdraw';
+import InvestTransaction from './pages/dashboard/invest/InvestTransaction';
+import Package from './pages/dashboard/invest/Invest';
 
 
 function App() {
@@ -26,6 +33,7 @@ function App() {
        <Route  path='/' element={<MainLayout />}>
        <Route index element={<LandingPage/>}/>
        <Route path='/login' element={<LoginUser/>}/>
+       <Route path='/dashboard' element={<Dashboard/>}/>
        <Route path='/register' element={<Register/>}/>
        <Route path='/about/company' element={<Company/>}/>
        <Route path='/about/perspective' element={<Perspect/>}/>
@@ -38,6 +46,12 @@ function App() {
        <Route path="/forex" element={<Forex/>}/>
        <Route path="/enviroment" element={<ESG/>}/>
        <Route path="/diversity" element={<DI/>}/>
+       <Route path='/deposit' element={<Deposit/>}/>
+       <Route path='/referral' element={<Referral/>}/>
+       <Route path='/transaction' element={<Transaction/>}/>
+       <Route path='/withdraw' element={<Withdraw/>}/>
+       <Route path='/package' element={<Package/>}/>
+       <Route path='/myinvestment' element={<InvestTransaction/>}/>
     </Route>
       </Routes>      
     </ BrowserRouter>

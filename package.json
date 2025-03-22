@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-country-state-city": "^1.1.12",
     "react-flags-select": "^2.4.0"
   }
 }
