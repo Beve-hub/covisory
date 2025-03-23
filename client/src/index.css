@@ -21,8 +21,11 @@
   --secondary-light: #071e6360; 
   --tertiary-color: #dbe4f2; 
   --logo-text: #009ff5;
+  --card-color: #ebeef98a;
   --light-logo: #bfc6ee38;
   --transparent-white: #ffffff6b;
+  --success-color: #026923f1;
+  --error-color: #bd0606;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -43,7 +46,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+ 
   min-height: 100vh;
   justify-content: center;
 }

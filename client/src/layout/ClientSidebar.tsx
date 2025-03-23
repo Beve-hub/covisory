@@ -2,7 +2,7 @@ import { BiSolidDashboard } from "react-icons/bi";
 import { GiWallet } from "react-icons/gi";
 import { useState } from "react";
 import { NavLink,  useNavigate } from "react-router-dom";
-import { MdOutlineKeyboardArrowDown, MdCancel } from "react-icons/md";
+import { MdOutlineKeyboardArrowDown,MdOutlineKeyboardArrowRight, MdCancel,MdOutlineLogout, MdSettings } from "react-icons/md";
 import { FaPiggyBank } from "react-icons/fa6";
 import { IoMdArrowDropright, IoMdArrowDropleft } from "react-icons/io";
 import { IoIosWallet } from "react-icons/io";
@@ -11,6 +11,8 @@ import { HiArchiveBoxArrowDown } from "react-icons/hi2";
 import { ImUsers } from "react-icons/im";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
+import { FaUserCircle } from "react-icons/fa";
+import {useSlider} from "./Slider"
 
 const sidebar = [
   {
@@ -23,8 +25,8 @@ const sidebar = [
     path: "#",
     icon: <GiWallet size={24} />,
     dropdown: [
-      { name: "Invest", path: "/package", icon: <HiWallet size={24} /> },
-      { name: "My Investment", path: "/myinvestment", icon: <IoIosWallet size={24} /> },
+      { name: "Invest", path: "/package", icon: <HiWallet  /> },
+      { name: "My Investment", path: "/myinvestment", icon: <IoIosWallet /> },
     ],
   },
   { name: "Deposit", path: "/deposit", icon: <FaPiggyBank size={24} /> },
@@ -34,25 +36,27 @@ const sidebar = [
 ];
 
 const ClientSidebar = () => {
-  const [open, setOpen] = useState(true);
+  const {isOpen, toggleSlider} = useSlider();
   const [nav, setNav] = useState(false);
+  const [down, setDown] = useState(false);
   const [dropdown, setDropdown] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const toggleBar = () => setOpen(!open);
+ 
   const toggleDropdown = (name: string) => {
     setDropdown(dropdown === name ? null : name);
   };
   const handleBar = () => setNav(!nav);
+  const handleDown = () => setDown(!down)
 
   return (
     <div className="absolute top-0 left-0">
       {/* sidebar header*/}
-      <div onClick={handleBar} className="block md:hidden ml-4 cursor-pointer">
+      <div onClick={handleBar} className="fixed md:hidden ml-4 cursor-pointer">
         {nav ? "" : <IoMenu size={30} />}
       </div>
       <div
-        style={{ width: open ? "250px" : "120px" }}
+        style={{ width: isOpen ? "200px" : "120px" }}
         className="w-[230px] h-screen bg-[var(--secondary-color)] p-8 fixed z-50 shadow-lg sm:block hidden"
       >
         <div className="flex p-2 items-center">
@@ -60,10 +64,10 @@ const ClientSidebar = () => {
             <p>Logo</p>
           </div>
           <div
-            onClick={toggleBar}
-            className="absolute right-[-30px] shadow-lg rounded-full p-2 bg-[var(--light-gray)] cursor-pointer"
+           onClick={toggleSlider}
+            className="absolute right-[-5px] shadow-lg z-50 rounded-full p-2 bg-[var(--light-gray)] cursor-pointer"
           >
-            {open ? <IoMdArrowDropleft /> : <IoMdArrowDropright />}
+            {isOpen ? <IoMdArrowDropright /> : <IoMdArrowDropleft />}
           </div>
         </div>
 
@@ -78,21 +82,21 @@ const ClientSidebar = () => {
                     onClick={() => toggleDropdown(item.name)}
                   >
                     <p className="text-[var(--text-white)]">{item.icon}</p>
-                    <p style={{ display: open ? "block" : "none" }} className="text-[var(--text-white)]">
+                    <p style={{ display: isOpen ? "block" : "none" }} className="text-[var(--text-white)]">
                       {item.name}
                     </p>
-                    <MdOutlineKeyboardArrowDown
-                      className={`transition-transform ${dropdown === item.name ? "rotate-180" : ""} text-[var(--text-white)]`}
+                    <MdOutlineKeyboardArrowRight
+                      className={`transition-transform ${dropdown === item.name ? "rotate-90" : ""} text-[var(--text-white)]`}
                     />
                   </div>
                   {dropdown === item.name && (
                     <div className=" ml-4">
                       {item.dropdown.map((subItem, subIndex) => (
-                        <NavLink key={subIndex} to={subItem.path} className="block  py-2 hover:bg-[var(--text-white)] rounded-md text-[var(--text-white)]">
-                          <div className="flex items-center gap-2">
-                            {subItem.icon}
-                            <span style={{ display: open ? "block" : "none" }}>{subItem.name}</span>
-                          </div>
+                        <NavLink key={subIndex} to={subItem.path} className="block py-2 hover:bg-[var(--text-white)] rounded-md text-[var(--text-white)]">
+                          <p className="flex items-center text-md  gap-2">
+                            
+                            <span style={{ display: isOpen ? "block" : "none" }}>{subItem.name}</span>
+                          </p>
                         </NavLink>
                       ))}
                     </div>
@@ -101,7 +105,7 @@ const ClientSidebar = () => {
               ) : (
                 <NavLink to={item.path} className="flex items-center gap-2 py-3">
                   {item.icon}
-                  <p style={{ display: open ? "block" : "none" }} className="text-[var(--text-white)]">
+                  <p style={{ display: isOpen ? "block" : "none" }} className="text-[var(--text-white)]">
                     {item.name}
                   </p>
                 </NavLink>
@@ -109,10 +113,37 @@ const ClientSidebar = () => {
             </div>
           ))}
         </div>
+
+         {/* User Options */}
+      <div className="absolute bottom-10 pt-6 border-t border-gray-700">
+      <NavLink to="/settings" className="flex items-center gap-2 py-3 text-[var(--text-white)]">
+                <MdSettings size={24} />
+                {isOpen && <span>Settings</span>}
+              </NavLink>
+      <div onClick={handleDown} className="flex items-center gap-2 py-3 text-[var(--text-white)] cursor-pointer">
+            <FaUserCircle size={24} />
+            {isOpen && <span>Profile</span>}
+            <MdOutlineKeyboardArrowDown className={down ? "rotate-180" : ""} />
+          </div>
+          {down && (
+            <div className="ml-4">
+              
+              <NavLink to="/" className="flex items-center gap-2 py-3 text-red-500">
+                <MdOutlineLogout size={24} />
+                {isOpen && <span>Logout</span>}
+              </NavLink>
+            </div>
+          )}
+          
+        </div>
+
+
+        
       </div>
       
 
       {/* sidebar mobile */}
+      <div>
       {nav && (
         <div className="md:hidden fixed top-0 left-0 h-screen w-64 bg-[var(--light-gray)] shadow-lg z-50 p-4">
           <div onClick={handleBar} className="flex justify-end cursor-pointer">
@@ -146,6 +177,14 @@ const ClientSidebar = () => {
           </ul>
         </div>
       )}
+
+
+      
+      </div>
+      
+
+
+     
     </div>
   );
 };

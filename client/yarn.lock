@@ -1712,6 +1712,13 @@ react-leaflet@^5.0.0:
   dependencies:
     "@react-leaflet/core" "^3.0.0"
 
+react-minimal-pie-chart@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/react-minimal-pie-chart/-/react-minimal-pie-chart-9.1.0.tgz#bc77820e584bfd483615f0b1b43f0ab1a619d3d0"
+  integrity sha512-JziZXZT0aw+9X+rGSpQwbSG7t3ypsyhzJNpiTUGfVeCqr70YIPbHE5Us3RsCsNRlVHbeLGrp/ibVuzUJT6Gcvw==
+  dependencies:
+    svg-partial-circle "^1.0.0"
+
 react-refresh@^0.14.2:
   version "0.14.2"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.14.2.tgz#3833da01ce32da470f1f936b9d477da5c7028bf9"
@@ -1855,6 +1862,11 @@ supports-color@^7.1.0:
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
   dependencies:
     has-flag "^4.0.0"
+
+svg-partial-circle@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/svg-partial-circle/-/svg-partial-circle-1.0.0.tgz#1121e8e03bdd895b34d655d75b98b8fc7086347e"
+  integrity sha512-jDWgNzrlpsGo9A7/tdjCy6+1RzeeANYV1a3JtNYC/0ZXI3U+3VMucuNv7JuKti9VVBdyNxNO1CZs/k0xS1lUFA==
 
 tailwindcss@4.0.12, tailwindcss@^4.0.12:
   version "4.0.12"

@@ -1,10 +1,18 @@
-import React from 'react'
+import BodyTrans from "./BodyTrans"
+import TopTrans from "./TopTrans"
+import {useSlider} from "../../../layout/Slider"
 
-type Props = {}
 
-const Transaction = (props: Props) => {
+const Transaction = () => {
+  const {isOpen} = useSlider();
   return (
-    <div>Transaction</div>
+    <div style={{
+      marginLeft: isOpen ? "90px" : "0px",
+      transition: "margin 0.3s ease",
+    }}>
+      <TopTrans/>
+      <BodyTrans/>
+    </div>
   )
 }
 

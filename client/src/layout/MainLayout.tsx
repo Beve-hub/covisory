@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import ClientSidebar from "./ClientSidebar";
 import Footer from "./Footer";
 import AdminSidebar from "./AdminSidebar";
+import { SliderProvider } from "./Slider";
 
 const MainLayout = () => {
   const location = useLocation();
@@ -12,6 +13,7 @@ const MainLayout = () => {
   const showAdminSidebar = ["/AdminDashboard"].includes(location.pathname);
 
   return (
+    <SliderProvider>
     <div>
       {showNavbar && <Navbar />}
       {showClientSidebar && <ClientSidebar />}
@@ -19,6 +21,7 @@ const MainLayout = () => {
       <Outlet />  {/* <-- Ensures the page content is rendered */}
       {showNavbar && <Footer />}
     </div>
+    </SliderProvider>
   );
 };
 
