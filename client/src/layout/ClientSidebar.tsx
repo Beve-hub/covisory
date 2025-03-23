@@ -25,7 +25,7 @@ const sidebar = [
     path: "#",
     icon: <GiWallet size={24} />,
     dropdown: [
-      { name: "Invest", path: "/package", icon: <HiWallet  /> },
+      { name: "Pacakage", path: "/package", icon: <HiWallet  /> },
       { name: "My Investment", path: "/myinvestment", icon: <IoIosWallet /> },
     ],
   },

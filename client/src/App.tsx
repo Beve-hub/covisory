@@ -22,6 +22,10 @@ import Transaction from './pages/dashboard/transaction/Transaction';
 import Withdraw from './pages/dashboard/action/Withdraw';
 import InvestTransaction from './pages/dashboard/invest/InvestTransaction';
 import Package from './pages/dashboard/invest/Invest';
+import DepositSumary from './pages/dashboard/action/deposit/DepositSumary';
+import DepositCheckout from './pages/dashboard/action/deposit/DepositCheckout';
+import WithdrawSummary from './pages/dashboard/action/withdraw/WithdrawSummary';
+import WithdrawCheckout from './pages/dashboard/action/withdraw/WithdrawCheckout';
 
 
 function App() {
@@ -51,7 +55,11 @@ function App() {
        <Route path='/transaction' element={<Transaction/>}/>
        <Route path='/withdraw' element={<Withdraw/>}/>
        <Route path='/package' element={<Package/>}/>
+       <Route path='/depositSummary' element={<DepositSumary/>}/>
+       <Route path='/depositCheckout' element={<DepositCheckout/>}/>
        <Route path='/myinvestment' element={<InvestTransaction/>}/>
+       <Route path='/withdrawSummary' element={<WithdrawSummary/>}/>
+       <Route path='/withdrawCheckout' element={<WithdrawCheckout/>}/>
     </Route>
       </Routes>      
     </ BrowserRouter>

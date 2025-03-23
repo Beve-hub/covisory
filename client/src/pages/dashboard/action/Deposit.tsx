@@ -1,10 +1,18 @@
-import React from 'react'
+import BodyDeposit from "./deposit/BodyDeposit"
+import TopDeposit from "./deposit/TopDeposit"
+import {useSlider} from "../../../layout/Slider"
 
-type Props = {}
 
-const Deposit = (props: Props) => {
+const Deposit = () => {
+  const {isOpen} = useSlider();
   return (
-    <div>Deposit</div>
+    <div style={{
+      marginLeft: isOpen ? "90px" : "0px",
+      transition: "margin 0.3s ease",
+    }}>
+      <TopDeposit/>
+      <BodyDeposit/>
+    </div>
   )
 }
 

@@ -2,10 +2,12 @@ import { useState } from "react";
 import { FaRegCopy, FaWallet,FaCoins  } from "react-icons/fa";
 import { FaChartSimple } from "react-icons/fa6";
 import { GrTransaction } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 
 
 
 const TopDash = () => {
+  const navigate = useNavigate();
     const [copied, setCopied] = useState(false);
   const referralLink = "https://www.covisoryholdingsfx.com/register/victor";
 
@@ -88,8 +90,15 @@ const TopDash = () => {
             <div className="w-full h-[10rem] bg-[var(--card-color)] rounded-lg p-4 md:col-span-3">
                 <h2 className="font-bold text-lg pb-2">Quick Action</h2>
                 <div className="grid justify-center  items-center  gap-2">
-                    <button className="bg-[var(--secondary-color)] text-[var(--text-white)] px-2 py-2 rounded-md w-[15rem]">Deposit</button>
-                    <button className="bg-[var(--text-black)] text-[var(--text-white)] px-4 py-2 rounded-md w-[15rem]">Withdraw</button>
+                    <button 
+                    onClick={() => navigate('/deposit')}
+                    className="bg-[var(--secondary-color)] text-[var(--text-white)] px-2 py-2 rounded-md w-[15rem]">Deposit
+                    </button>
+                    
+                    <button 
+                    onClick={() => navigate('/withdraw')}
+                    className="bg-[var(--text-black)] text-[var(--text-white)] px-4 py-2 rounded-md w-[15rem]">Withdraw
+                    </button>
                 </div>
             </div>
 
