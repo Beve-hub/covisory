@@ -4,7 +4,7 @@ import menu from "../assets/menu.svg";
 import cancel from "../assets/cancel.svg";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
-import Logo from "../assets/icon.png"
+import Logo from "../assets/1.png"
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -97,7 +97,7 @@ const Navbar = () => {
       {/* Main Navbar */}
       <div className="container mx-auto px-4 md:px-8 lg:px-16 py-3 flex items-center justify-between">
         <NavLink to="/" className="text-lg font-bold">
-          <img src={Logo} alt="" className="w-[8rem]"/>
+          <img src={Logo} alt="" className="w-[10rem]"/>
         </NavLink>
 
         <ul className="hidden md:flex space-x-14 items-center mx-auto"

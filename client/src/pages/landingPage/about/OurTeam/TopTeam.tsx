@@ -5,7 +5,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 const TopTeam = () => {
   return (
     <section 
-        className="relative w-screen h-[25rem] grid items-center pt-16 pb-6 px-6 text-left md:text-left"
+        className="relative w-screen h-[25rem] pt-[10rem] grid items-center pt-16 pb-6 px-6 text-left md:text-left"
         style={{ backgroundImage: `url(${IMG})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         

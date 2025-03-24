@@ -82,10 +82,9 @@ p {
 
 .nav-link.active {
  
-  color: var(--secondary-color) !important;
+  color: var(--secondary-color) ;
   border-radius: 8px;
-  border-width: 2;
-  border-bottom: var(--primary-color) !important;
+  border-bottom: '2px var(--primary-color)' ;
 }
 
 @media (prefers-color-scheme: light) {

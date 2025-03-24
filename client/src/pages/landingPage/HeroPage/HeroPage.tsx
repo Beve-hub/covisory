@@ -25,7 +25,7 @@ const HeroPage = () => {
 
   return (
     <section
-      className="h-screen w-screen flex items-center justify-center px-10 bg-cover bg-center transition-all duration-1000 relative"
+      className="h-screen w-screen flex items-center justify-center px-10 bg-cover bg-center transition-all duration-1000 relative mt-10"
       style={{ backgroundImage: `url(${images[currentIndex].src})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }}
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
