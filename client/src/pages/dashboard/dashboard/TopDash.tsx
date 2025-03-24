@@ -21,8 +21,8 @@ const TopDash = () => {
     <div  className="max-w-5xl" >
         {/* header */}
         <div>
-            <p className="text-[var(--gray-color)] text-xl ">welcome,</p>
-            <h2 className="font-bold text-4xl">Victor</h2>
+            <p className="text-[var(--gray-color)] text-xl ">Hi welcome,</p>
+            <h2 className="font-bold text-3xl">Victor Smith</h2>
         </div>
 
         {/* cards */}

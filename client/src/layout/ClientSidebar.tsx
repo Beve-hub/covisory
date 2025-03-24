@@ -62,7 +62,7 @@ const ClientSidebar = () => {
       >
         <div className="flex p-2 items-center">
           <div onClick={() => navigate("/overview")} className="flex gap-2">
-            <img src={Logo} alt="" className="w-[10rem]"/>
+            <img src={Logo} alt="" className="w-[8rem]"/>
           </div>
           <div
            onClick={toggleSlider}
