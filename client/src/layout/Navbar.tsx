@@ -187,7 +187,7 @@ const Navbar = () => {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>
-                      `block px-4 py-2 ${isActive ? "text-blue-600 font-bold" : "text-gray-800"}`
+                      `block px-4 py-2 ${isActive ? "text-blue-600 font-bold" : "text-gray-800"} text-[var(--text-black)]`
                     }
                   >
                     {link.name}
