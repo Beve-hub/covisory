@@ -17,7 +17,6 @@ import DI from './pages/landingPage/method/DI/DI';
 import Register from './pages/auth/Register';
 import Dashboard from './pages/dashboard/dashboard/Dashboard';
 import Deposit from './pages/dashboard/action/Deposit';
-import Referral from './pages/dashboard/action/Referral';
 import Transaction from './pages/dashboard/transaction/Transaction';
 import Withdraw from './pages/dashboard/action/Withdraw';
 import InvestTransaction from './pages/dashboard/invest/InvestTransaction';
@@ -52,7 +51,6 @@ function App() {
        <Route path="/enviroment" element={<ESG/>}/>
        <Route path="/diversity" element={<DI/>}/>
        <Route path='/deposit' element={<Deposit/>}/>
-       <Route path='/referral' element={<Referral/>}/>
        <Route path='/transaction' element={<Transaction/>}/>
        <Route path='/withdraw' element={<Withdraw/>}/>
        <Route path='/package' element={<Package/>}/>
