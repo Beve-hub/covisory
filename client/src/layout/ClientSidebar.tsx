@@ -115,29 +115,7 @@ const ClientSidebar = () => {
           ))}
         </div>
 
-         {/* User Options */}
-      <div className="absolute bottom-10 pt-6 border-t border-gray-700">
-      <NavLink to="/settings" className="flex items-center gap-2 py-3 text-[var(--text-white)]">
-                <MdSettings size={24} />
-                {isOpen && <span>Settings</span>}
-              </NavLink>
-      <div onClick={handleDown} className="flex items-center gap-2 py-3 text-[var(--text-white)] cursor-pointer">
-            <FaUserCircle size={24} />
-            {isOpen && <span>Profile</span>}
-            <MdOutlineKeyboardArrowDown className={down ? "rotate-180" : ""} />
-          </div>
-          {down && (
-            <div className="ml-4">
-              
-              <NavLink to="/" className="flex items-center gap-2 py-3 text-red-500">
-                <MdOutlineLogout size={24} />
-                {isOpen && <span>Logout</span>}
-              </NavLink>
-            </div>
-          )}
-          
-        </div>
-
+      
 
         
       </div>
@@ -176,6 +154,29 @@ const ClientSidebar = () => {
               </li>
             ))}
           </ul>
+             {/* User Options */}
+      <div className="absolute bottom-10 pt-6 border-t border-gray-700">
+      <NavLink to="/settings" className="flex items-center gap-2 py-3 text-[var(--text-white)]">
+                <MdSettings size={24} />
+                {isOpen && <span>Settings</span>}
+              </NavLink>
+      <div onClick={handleDown} className="flex items-center gap-2 py-3 text-[var(--text-white)] cursor-pointer">
+            <FaUserCircle size={24} />
+            {isOpen && <span>Profile</span>}
+            <MdOutlineKeyboardArrowDown className={down ? "rotate-180" : ""} />
+          </div>
+          {down && (
+            <div className="ml-4">
+              
+              <NavLink to="/" className="flex items-center gap-2 py-3 text-red-500">
+                <MdOutlineLogout size={24} />
+                {isOpen && <span>Logout</span>}
+              </NavLink>
+            </div>
+          )}
+          
+        </div>
+
         </div>
       )}
 

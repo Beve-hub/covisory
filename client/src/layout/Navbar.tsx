@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import menu from "../assets/menu.svg";
-import cancel from "../assets/cancel.svg";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { MdCancel,MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import Logo from "../assets/1.png"
+import { IoMenu } from "react-icons/io5";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -157,23 +156,23 @@ const Navbar = () => {
         </div>
 
         <div className="md:hidden " onClick={() => setNavOpen(!navOpen)}
-        style={{ backgroundColor: scroll ? "var(--text-color)" : "var(--text-white)", padding:'10px', borderRadius: '30px' }}
+        style={{ backgroundColor: scroll ? "var(--text-color)" : "var(--text-white)", padding:'2px', borderRadius: '30px' }}
           >
-          <img src={navOpen ? cancel : menu} alt="Menu" className="w-8 h-8" />
+            {navOpen ? <MdCancel size={36}/> : <IoMenu size={36}/>}
         </div>
       </div>
 
       {navOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-md p-4">
-          <ul className="space-y-4">
+        <div className="md:hidden fixed top-0 left-0 h-screen w-64 bg-[var(--secondary-color)] shadow-lg z-50 px-4 pt-20">
+          <ul className=" grid gap-8">
             {navLinks.map((link) => (
               <li key={link.name}>
                 {link.dropdown ? (
                   <details>
-                    <summary className="flex items-center cursor-pointer">
+                    <summary className="flex items-center text-lg text-[var(--text-white)] ml-4 cursor-pointer">
                       {link.name} <MdOutlineKeyboardArrowDown />
                     </summary>
-                    <ul className="ml-4 mt-2 space-y-2">
+                    <ul className="bg-[var(--gray-color)] ">
                       {link.dropdown.map((item) => (
                         <li key={item.name}>
                           <NavLink to={item.path} className="block px-4 py-2 hover:bg-gray-100">
@@ -187,7 +186,7 @@ const Navbar = () => {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>
-                      `block px-4 py-2 ${isActive ? "text-blue-600 font-bold" : "text-gray-800"} text-[var(--text-black)]`
+                      `block px-4   ${isActive ? "text-blue-600 font-bold" : "text-gray-800"} text-[var(--text-white)] text-lg`
                     }
                   >
                     {link.name}
