@@ -20,7 +20,7 @@ const Pricing = () => {
       } else if (window.innerWidth < 1024) {
         setVisibleCards(2);
       } else {
-        setVisibleCards(3);
+        setVisibleCards(2);
       }
     };
 
@@ -52,7 +52,7 @@ const Pricing = () => {
         {/* Infinite Carousel */}
         <div className="relative overflow-hidden">
           <div className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${(currentIndex * 100) / visibleCards}%)`, width: `${(card.length + visibleCards) * (100 / visibleCards)}%` }}>
+            style={{ transform: `translateX(-${(currentIndex * 10) / visibleCards}%)`, width: `${(card.length + visibleCards) * (100 / visibleCards)}%` }}>
             {[...card, ...card.slice(0, visibleCards)].map((item, index) => (
               <div key={index} className={`w-${12 / visibleCards}/12 flex justify-center items-center px-4`}>
                 <div className="shadow-lg bg-[var(--text-white)] text-[var(--text-black)] p-6 rounded-lg w-full">
@@ -67,7 +67,10 @@ const Pricing = () => {
                     <li className="flex items-center gap-2"><BsPatchCheckFill /> {item.ref}</li>
                     <li className="flex items-center gap-2"><BsPatchCheckFill /> {item.desc}</li>
                   </ul>
-                  <p className="p-2 text-center bg-[var(--primary-color)] text-[var(--text-white)] my-6 cursor-pointer">Choose Plan</p>
+
+                  <p className="p-2 text-center bg-[var(--primary-color)] text-[var(--text-white)] my-6 cursor-pointer">
+                    Choose Plan</p>
+                
                 </div>
               </div>
             ))}

@@ -32,7 +32,7 @@ const sidebar = [
   { name: "Deposit", path: "/deposit", icon: <FaPiggyBank size={24} /> },
   { name: "Withdrawal", path: "/withdraw", icon: <HiArchiveBoxArrowDown size={24} /> },
   { name: "Transaction", path: "/transaction", icon: <FaMoneyBillTransfer size={24} /> },
-  { name: "Referral", path: "/referral", icon: <ImUsers size={24} /> },
+  
 ];
 
 const ClientSidebar = () => {

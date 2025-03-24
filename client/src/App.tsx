@@ -26,6 +26,7 @@ import DepositSumary from './pages/dashboard/action/deposit/DepositSumary';
 import DepositCheckout from './pages/dashboard/action/deposit/DepositCheckout';
 import WithdrawSummary from './pages/dashboard/action/withdraw/WithdrawSummary';
 import WithdrawCheckout from './pages/dashboard/action/withdraw/WithdrawCheckout';
+import Setting from './pages/dashboard/settings/Setting';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
        <Route path='/myinvestment' element={<InvestTransaction/>}/>
        <Route path='/withdrawSummary' element={<WithdrawSummary/>}/>
        <Route path='/withdrawCheckout' element={<WithdrawCheckout/>}/>
+       <Route path='/settings' element={<Setting/>}/>
     </Route>
       </Routes>      
     </ BrowserRouter>
