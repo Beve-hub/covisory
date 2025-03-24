@@ -1,19 +1,33 @@
 import { useState } from "react";
 import { MdLockOpen, MdLockOutline } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../assets/white.png"
+
 
 const LoginUser = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
+
+  const handleSubmit = () => {
+    navigate('/dashboard')
+  }
   return (
     <section className="flex items-center justify-center w-screen h-screen p-4 bg-[var(--primary-color)]">
       <div>
-      <h2 className="text-2xl font-bold text-center text-gray-700 mb-4">Logo</h2>
+      <div className="flex justify-center my-4">
+      <img src={Logo} alt="" className="w-[15rem]"/>
+      </div>
+      
+
+
       <div className="bg-white p-8 rounded-xl shadow-lg max-w-md w-full">
         <h3 className="text-2xl text-center text-[var(--text-black)] font-bold mb-2">Login</h3>
         <p className="text-md text-center text-[var(--gray-color)] mb-6">Enter your Username and password to access the dashboard.</p>
 
-        <form className="w-full space-y-6">
+        <form
+        onSubmit={handleSubmit}
+         className="w-full space-y-6">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-1">
               Email address
@@ -22,7 +36,6 @@ const LoginUser = () => {
               id="email"
               name="email"
               type="email"
-              autoComplete="email"
               className="w-full rounded-md border border-gray-300 px-3 py-2 text-base text-[var(--text-black)] bg-[var(--text-white)] placeholder-gray-400  focus:ring-2 focus:ring-[var(--primary-color)] focus:border-[var(--primary-color)]"
               placeholder="Enter your email"
             />
