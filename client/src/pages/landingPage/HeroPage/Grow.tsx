@@ -1,13 +1,13 @@
 import IMG1 from "../../../assets/partner.jpg";
-import IMG2 from "../../../assets/about1.jpg";
-import IMG3 from "../../../assets/about1.jpg";
+import IMG2 from "../../../assets/grow4.jpg";
+import IMG3 from "../../../assets/grow3.jpg";
 
 const Grow = () => {
   return (
     <section className="bg-[var(--secondary-color)] py-16 px-4 text-center md:text-left">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <div>
-        <p className="relative overflow-hidden border-[var(--primary-color)] font-bold text-lg border-l-4 text-[var(--secondary-color)] w-[20rem]
+        <p className="relative overflow-hidden border-[var(--primary-color)] font-bold text-lg border-l-4 text-[var(--text-white)] w-[20rem]
          px-4 transition-all duration-300 group hover:text-[var(--text-white)] hover:bg-[var(--button-color)] before:absolute before:top-0 
          before:left-0 before:w-0 before:h-full before:bg-[var(--primary-color)] before:transition-all before:duration-500 hover:before:w-full">
         

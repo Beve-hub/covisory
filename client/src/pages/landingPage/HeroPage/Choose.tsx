@@ -1,5 +1,5 @@
 import { HiCheckBadge } from "react-icons/hi2";
-import IMG1 from "../../../assets/5a.jpg";
+import IMG1 from "../../../assets/team.jpg";
 
 const Choose = () => {
   return (
@@ -19,15 +19,14 @@ const Choose = () => {
           <p className="text-[var(--primary-color)] font-semibold text-md">
             Why Choose Covisory Holdings?
           </p>
-          <h2 className="text-[var(--text-black)] py-3 font-bold text-3xl sm:text-4xl md:text-5xl leading-tight">
+          <h2 className="text-[var(--text-black)] py-3 font-bold text-2xl sm:text-xl md:text-3xl leading-tight">
             Want to Be a Part of Our Team?
           </h2>
-          <p className="text-[var(--gray-color)] text-lg leading-relaxed">
+          <p className="text-[var(--gray-color)] text-md leading-relaxed">
             At Covisory Holdings, we manage a diverse portfolio of highly recognized institutions, including endowments,
             foundations, public and private pension funds, financial firms, family offices, and sovereign entities.
             Our investment approach spans the entire risk/return spectrum, ensuring tailored solutions for each client.
-          </p>
-          <p className="text-[var(--gray-color)] text-lg leading-relaxed mt-4">
+         <br />
             We believe that successful investing is built on in-depth research, not speculation. Our philosophy centers on 
             applying value-driven investment strategies, rigorous bottom-up analysis, sophisticated legal and financial frameworks, 
             and proactive asset management to every opportunity we pursue.
@@ -40,7 +39,7 @@ const Choose = () => {
             </p>
             <ul className="text-[var(--text-black)] grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
               {['Technology', 'Clean Energy', 'Insurance', 'Assets'].map((item, index) => (
-                <li key={index} className="text-[var(--gray-color)] flex items-center gap-2 text-lg">
+                <li key={index} className="text-[var(--gray-color)] flex items-center gap-2 text-md">
                   <HiCheckBadge color="text-[var(--primary-color)]" /> {item}
                 </li>
               ))}

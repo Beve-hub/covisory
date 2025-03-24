@@ -12,6 +12,8 @@ import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
 import {useSlider} from "./Slider"
+import Logo from "../assets/iconwhite.png"
+
 
 const sidebar = [
   {
@@ -59,8 +61,8 @@ const ClientSidebar = () => {
         className="w-[230px] h-screen bg-[var(--secondary-color)] p-8 fixed z-50 shadow-lg sm:block hidden"
       >
         <div className="flex p-2 items-center">
-          <div onClick={() => navigate("/overview")}>
-            <p>Logo</p>
+          <div onClick={() => navigate("/overview")} className="flex gap-2">
+            <img src={Logo} alt="" className="w-[10rem]"/>
           </div>
           <div
            onClick={toggleSlider}

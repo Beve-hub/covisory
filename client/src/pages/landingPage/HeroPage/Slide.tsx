@@ -1,13 +1,13 @@
-import IMG from "../../../assets/5a.jpg";
-import IMG2 from "../../../assets/5b.jpg";
-import IMG3 from "../../../assets/5c.jpg";
-import IMG4 from "../../../assets/5a.jpg";
+import IMG from "../../../assets/AIS.jpg";
+import IMG2 from "../../../assets/FF.jpg";
+import IMG3 from "../../../assets/fst.jpg";
+import IMG4 from "../../../assets/dii.jpg";
 
 const images = [
-  { src: IMG, title: "Forest Trading", sub: "Forest",num:'01' },
-  { src: IMG2, title: "Forest Trading", sub: "Forest",num:'02' },
-  { src: IMG3, title: "Forest Trading", sub: "Forest",num:'03' },
-  { src: IMG4, title: "Forest Trading", sub: "Forest",num:'04' },
+  { src: IMG, title: "AI Algorithm", sub: "Stocks Trade",num:'01' },
+  { src: IMG4, title: "Diversity & Inculsion ", sub: "D & I",num:'02' },
+  { src: IMG3, title: "Strategies", sub: "Team",num:'03' },
+  { src: IMG2, title: "Financial Forcast", sub: "Forex Trade",num:'04' },
 ];
 
 const Slide = () => {
@@ -32,8 +32,8 @@ const Slide = () => {
             
             {/* Title and Sub */}
             <div className="absolute bottom-5 left-5 text-white transition-opacity duration-500">
-              <p className="text-lg font-bold">{item.title}</p>
-              <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 sm:text-start">
+              <p className="text-2xl font-bold">{item.title}</p>
+              <p className="text-lg  font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500 sm:text-start">
                 {item.sub}
               </p>
             </div>

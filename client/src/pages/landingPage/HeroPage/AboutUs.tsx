@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
-import IMG1 from "../../../assets/partner.jpg";
-import IMG2 from "../../../assets/about1.jpg";
+import IMG1 from "../../../assets/about1.jpg";
+import IMG2 from "../../../assets/video2.jpg";
 
 const AboutUs = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ const AboutUs = () => {
               <img
                 src={IMG2}
                 alt="About"
-                className="w-[20rem] h-[20rem] object-cover sm:h-[25rem] rounded-lg relative z-10 transition-transform duration-300 group-hover:scale-105"
+                className="w-[20rem] h-[20rem] object-cover  sm:h-[25rem] rounded-lg relative z-10 transition-transform duration-300 group-hover:scale-105"
               />
               <button
                 onClick={() => setIsOpen(true)}
@@ -38,9 +38,10 @@ const AboutUs = () => {
         {/* About Us Content */}
         <div className="px-4 text-center md:text-left">
           <p className="relative overflow-hidden border-[var(--primary-color)] font-bold text-lg border-l-4 text-[var(--secondary-color)]
-             px-4 transition-all duration-300 group hover:text-[var(--text-white)] hover:bg-[var(--button-color)] before:absolute before:top-0 
-             before:left-0 before:w-0 before:h-full before:bg-[var(--primary-color)] before:transition-all before:duration-500 hover:before:w-full">Who we are</p>
-          <h2 className="text-[var(--text-black)] text-3xl sm:text-4xl md:text-5xl font-bold">Welcome to Covisory Holdings</h2>
+         px-4 transition-all duration-300 group hover:text-[var(--text-white)] hover:bg-[var(--button-color)] before:absolute before:top-0 
+         before:left-0 before:w-0 before:h-full before:bg-[var(--primary-color)] before:transition-all before:duration-500 hover:before:w-full">Who we are</p>
+
+          <h2 className="text-[var(--text-black)] mb-4 text-2xl sm:text-2xl md:text-4xl font-bold">Welcome to Covisory Holdings</h2>
           <p className="mt-4 text-gray-500 text-sm sm:text-base">
             We help our clients achieve their most ambitious goals by putting the strategies of the most prosperous people, families, and institutions in the world into action through our knowledge and dedication.
             <br />
