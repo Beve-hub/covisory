@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 const Views = () => {
+  const navigate = useNavigate();
+
+
     return (
       <section className="bg-[var(--primary-light)] py-20 px-6 text-center">
         <div className="max-w-3xl mx-auto grid justify-center items-center text-center md:text-left">
@@ -12,9 +17,11 @@ const Views = () => {
             </p>
           </div>
           <div className="flex justify-center py-2 md:justify-center">
-            <p className="bg-[var(--primary-color)] text-white font-semibold py-3 px-8 rounded-lg shadow-lg cursor-pointer hover:opacity-90">
+            <button 
+            onClick={() => navigate('/contact')}
+            className="bg-[var(--primary-color)] text-white font-semibold py-3 px-8 rounded-lg shadow-lg cursor-pointer hover:opacity-90">
               Contact Us
-            </p>
+            </button>
           </div>
         </div>
       </section>

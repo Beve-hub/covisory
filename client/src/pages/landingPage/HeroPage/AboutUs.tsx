@@ -2,9 +2,11 @@ import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import IMG1 from "../../../assets/about1.jpg";
 import IMG2 from "../../../assets/video2.jpg";
+import { useNavigate } from "react-router-dom";
 
 const AboutUs = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); 
+  const navigate = useNavigate();
 
   return (
     <section className="bg-[var(--text-white)] py-[10rem] px-4 text-center md:text-left">
@@ -47,7 +49,7 @@ const AboutUs = () => {
             <br />
             Our durability, which spans years and generations, stems from the awareness that we are more than just a financial organization. We are engaged members of our communities, leaders in commerce and philanthropy on a worldwide scale, and conscientious designers of cutting-edge programs for employee support and benefits.
           </p>
-          <button className="mt-4 bg-[var(--secondary-color)] p-3 rounded-lg text-[var(--text-white)] font-semibold cursor-pointer w-40 text-center">Learn More</button>
+          <button onClick={() => navigate('/about/company')} className="mt-4 bg-[var(--secondary-color)] p-3 rounded-lg text-[var(--text-white)] font-semibold cursor-pointer w-40 text-center">Learn More</button>
         </div>
       </div>
 

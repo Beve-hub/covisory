@@ -44,10 +44,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t border-gray-700 mt-20 pt-6 flex flex-col md:flex-row justify-between items-center text-[var(--text-white)] text-sm">
-        <p>© 2024 Investment Expert. All Rights Reserved</p>
+        <p>© 2024 covisoryholdingsfx. </p>
         <div className="flex gap-4">
-          <p><a>Terms & Conditions</a></p>
-          <p><a>Privacy Policy</a></p>
+          <p><a>All Rights Reserved</a></p>
         </div>
       </div>
     </section>

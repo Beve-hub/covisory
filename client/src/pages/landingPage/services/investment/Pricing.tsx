@@ -41,11 +41,9 @@ const Pricing = () => {
       <div className="max-w-6xl mx-auto">
         {/* Text Content */}
         <div className="p-6 text-center">
-          <p className="w-[10rem] mx-auto relative overflow-hidden border-l-4 border-[var(--button-color)] font-bold text-lg text-[var(--text-white)] px-4 transition-all duration-300 group hover:text-[var(--text-white)] hover:bg-[var(--primary-color)]">
-            <span className="relative z-10">Our Pricing</span>
-          </p>
+          
           <h2 className="text-[var(--text-white)] font-bold text-3xl py-4">
-            Affordable Investment Plan
+            Investment Plan
           </h2>
         </div>
 

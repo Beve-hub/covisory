@@ -42,6 +42,7 @@ const Approach = () => {
               <p className="text-xl py-2 font-bold text-[var(--text-black)] hover:text-[var(--secondary-color)]">{item.text}</p>
               <p className="text-[var(--text-black)] text-balance">{item.desc}</p>
               <motion.div
+              onClick={() => navigate('/about/company')}
                 className="flex items-center mt-4 overflow-hidden relative"
                 whileHover={{ x: 10 }}
               >

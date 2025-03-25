@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import IMG1 from "../../../assets/5a.jpg";
 import IMG2 from "../../../assets/5b.jpg";
 import IMG3 from "../../../assets/5c.jpg";
 import { FaArrowRightLong } from "react-icons/fa6";
+
 
 const images = [
   {
@@ -9,22 +11,26 @@ const images = [
     text: "We are firmly committed to diversity. We are committed to fostering and work to build an inclusive workplace... ",
     bug: "Diversity & Inclusion",
     fix: "D & I",
+    path: '/diversity'
   },
   {
     src: IMG2,
     text: "Our corporate strategy policy is formed to ensure sustainable investments through beneficial engagement...  ",
     bug: "Environmental Social Governance",
     fix: "ESG",
+    path: '/enviroment'
   },
   {
     src: IMG3,
     text: "A Financial Plan That Is Specialized For Your Situation At Covisory Holdings, the process of financial planning...",
     bug: "Financial Forecast",
     fix: "Financial",
+    path: '/forex'
   },
 ];
 
 const Services = () => {
+  const navigate = useNavigate();
   return (
     <section className="bg-[var(--bg-white)] py-24 px-4 text-center md:text-left">
       <div className="max-w-6xl mx-auto">
@@ -54,9 +60,9 @@ const Services = () => {
               </div>
               {/* Arrow icon */}
               <div className="absolute right-4 bottom-4 text-xl text-gray-600">
-                <p className="bg-[var(--secondary-color)] text-[var(--text-white)] p-3 rounded-full">
+                <button onClick={() => navigate(item.path)} className="bg-[var(--secondary-color)] text-[var(--text-white)] p-3 rounded-full">
                   <FaArrowRightLong />
-                </p>
+                </button>
               </div>
             </div>
           ))}
