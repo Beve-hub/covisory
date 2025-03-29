@@ -10,8 +10,9 @@ import { HiWallet } from "react-icons/hi2";
 import { HiArchiveBoxArrowDown } from "react-icons/hi2";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaUsers  } from "react-icons/fa";
 import {useSlider} from "./Slider"
+import { IoWallet } from "react-icons/io5";
 import Logo from "../assets/iconwhite.png"
 
 
@@ -33,7 +34,13 @@ const sidebar = [
   { name: "Deposit", path: "/deposit", icon: <FaPiggyBank size={24} /> },
   { name: "Withdrawal", path: "/withdraw", icon: <HiArchiveBoxArrowDown size={24} /> },
   { name: "Transaction", path: "/transaction", icon: <FaMoneyBillTransfer size={24} /> },
+
+  /*Admin Dashboard */
   
+  { name: "Dashboard", path: "/adminDash", icon: <BiSolidDashboard  size={24} /> },
+  { name: "User", path: "/userClient", icon: <FaUsers  size={24} /> },
+  { name: "Transaction", path: "/adminTran", icon: <FaMoneyBillTransfer size={24} /> },
+  { name: "Wallet", path: "/adminWallet", icon: <IoWallet size={24} /> },
 ];
 
 const ClientSidebar = () => {

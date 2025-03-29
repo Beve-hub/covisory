@@ -26,6 +26,11 @@ import DepositCheckout from './pages/dashboard/action/deposit/DepositCheckout';
 import WithdrawSummary from './pages/dashboard/action/withdraw/WithdrawSummary';
 import WithdrawCheckout from './pages/dashboard/action/withdraw/WithdrawCheckout';
 import Setting from './pages/dashboard/settings/Setting';
+import UserDetails from './pages/dashboard/users/UserDetails';
+import Users from './pages/dashboard/users/Users';
+import AdminTran from './pages/dashboard/adminTran/AdminTran';
+import AdminWallet from './pages/dashboard/adminWallet/AdminWallet';
+import AdminDash from './pages/dashboard/adminDash/AdminDash';
 
 
 function App() {
@@ -60,6 +65,11 @@ function App() {
        <Route path='/withdrawSummary' element={<WithdrawSummary/>}/>
        <Route path='/withdrawCheckout' element={<WithdrawCheckout/>}/>
        <Route path='/settings' element={<Setting/>}/>
+       <Route path='/userDetails' element={<UserDetails/>}/>
+       <Route path='/userClient' element={<Users/>}/>
+       <Route path='/adminTran' element={<AdminTran/>}/>
+       <Route path='/adminWallet' element={<AdminWallet/>}/>
+       <Route path='/adminDash' element={<AdminDash/>}/>
     </Route>
       </Routes>      
     </ BrowserRouter>

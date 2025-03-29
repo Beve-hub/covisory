@@ -9,7 +9,7 @@ import { SliderProvider } from "./Slider";
 const MainLayout = () => {
   const location = useLocation();
   const showNavbar = ["/", "/landingPage","/about/company","/about/perspective","/about/team", "/member", "/investment","/strategy","/trade","/contact","/enviroment","/forex","/diversity"].includes(location.pathname);
-  const showClientSidebar = ["/dashboard","/deposit","/withdraw","/transaction", "/referral", "/package","/myinvestment","/depositSummary","/depositCheckout","/withdrawCheckout","/withdrawSummary","/settings"].includes(location.pathname);
+  const showClientSidebar = ["/dashboard","/deposit","/withdraw","/transaction", "/referral", "/package","/myinvestment","/depositSummary","/depositCheckout","/withdrawCheckout","/withdrawSummary","/settings","/userClient","/usersDetails","/adminTran","/adminWallet","/adminDash"].includes(location.pathname);
   const showAdminSidebar = ["/AdminDashboard"].includes(location.pathname);
 
   return (
