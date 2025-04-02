@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs')
 const router = Router();
 const emailValidator = require('email-validator');
 
+
+
 // Register a new user
 router.post('/register', async (req, res) => {
     try {
@@ -38,9 +40,8 @@ router.post('/register', async (req, res) => {
         const hashedPassword = await hashPassword(password);
         const newUser = new User({ firstName,lastName,userName,address, country, email, password: hashedPassword, verified: false });
         await newUser.save();
+        return res.status(201).json({ message: 'User registered successfully' });
 
-        // Send OTP verification email
-        await sendOTPVerification(newUser, res);
 
     } catch (err) {
         console.error(err);
@@ -50,7 +51,7 @@ router.post('/register', async (req, res) => {
 
 
 // Route to get all users
-router.get('/', async (req, res) => {
+router.get('/register', async (req, res) => {
     try {
         const users = await User.find();
         res.json(users);
@@ -74,13 +75,21 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Invalid password' });
         }
 
-        const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-        res.header('auth-token', token);
+        // Ensure TOKEN_SECRET is set
+        if (!process.env.TOKEN_SECRET) {
+            return res.status(500).json({ message: 'Server error: Missing TOKEN_SECRET' });
+        }
+
+        // Generate token
+        const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
+
+        // Send token in JSON format
         return res.json({ message: 'User logged in successfully', token });
     } catch (err) {
         console.error(err);
         return res.status(500).json({ message: 'Server error' });
     }
 });
+
 
 module.exports = router;

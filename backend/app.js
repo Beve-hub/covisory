@@ -1,13 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const users = require('./src/route/users')
-require('dotenv').config(); 
+const dotenv = require('dotenv')
+
+dotenv.config(); 
 
 const app = express();
 app.use(express.json()); // Middleware to parse JSON
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect("mongodb+srv://Admin:admin@beveinvest.hhjjfm3.mongodb.net/beveinvest", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log("Connected to MongoDB"))
