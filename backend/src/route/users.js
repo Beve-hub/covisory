@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs')
 const router = Router();
 const emailValidator = require('email-validator');
+const UserOTPVerification = require('../model/UserOtpVerify')
 
 
 
@@ -82,7 +83,7 @@ router.post('/login', async (req, res) => {
 
         // Generate token
         const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
-
+        res.header('auth-token', token).send(token)
         // Send token in JSON format
         return res.json({ message: 'User logged in successfully', token });
     } catch (err) {
@@ -90,6 +91,48 @@ router.post('/login', async (req, res) => {
         return res.status(500).json({ message: 'Server error' });
     }
 });
+
+//verify OTP 
+router.post('/verifyOTP', async (res,req) => {
+    try {
+        const {userId, otp} = req.body
+        if (!userId || !otp) {
+            return res.status(404).json({ message: 'User not found' })
+        }else {
+            const UserOTPVerificationRecord = await UserOTPVerification.find({userId});
+            if (UserOTPVerificationRecord.length <= 0) {
+                return res.status(404).json({message:"Account record doesn't exist or has been verified already. Please register or login."})
+            } else{
+
+            const {expiresAt} = UserOTPVerificationRecord[0];
+            const hashedOTP = UserOTPVerificationRecord[0].otp;
+
+            if (expiresAt < Date.now()) {
+                // OTP has expired
+                await UserOTPVerification.deleteMany({userId});
+                return res.status(404).json({message: 'Code has expired. Please request again.'});
+            }else {
+                const validOTP = await bcrypt.compare(otp, hashedOTP);
+
+                if(!validOTP){
+                    return res.status(404).json({message: 'Invalid code passed. check your inbox'})
+                } else {
+                    //success
+                    await User.updateOne({_id: userId}, { verified: true});
+                    await UserOTPVerification.deleteMany({userId});
+                    res.json({
+                        message: 'Email verified successfully',
+                        status: 'User email verified successfully'
+                    })
+                }
+            }
+        }
+        }
+    }catch(err){
+        console.error('Error verifying code :', error);
+        res.status(500).json({message: 'Error verifying code'});
+    }
+})
 
 
 module.exports = router;

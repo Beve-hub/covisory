@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json()); // Middleware to parse JSON
 
 // MongoDB Connection
-mongoose.connect("mongodb+srv://Admin:admin@beveinvest.hhjjfm3.mongodb.net/beveinvest", {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log("Connected to MongoDB"))
