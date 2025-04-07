@@ -3,20 +3,22 @@ const fs = require('fs').promises;
 const path = require('path');
 
 const transporter = nodemailer.createTransport({
-    service: process.env.MAIL_HOST,
+    service: 'gmail',
+  secure: false,
     auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
+        user: 'victor.interface23@gmail.com',
+        pass: 'lawqjcddihybnezt'
     }
 });
 
 const sendVerifiedEmail = async (email, code) => {
     try {
         // Read the email template
-        const htmlTemplate = await fs.readFile(path.join(__dirname, 'utils/template.html'), 'utf-8');
+        const htmlTemplate = await fs.readFile(path.join(__dirname, 'template.html'), 'utf-8');
+
 
         // Read the image as an attachment
-        const imagePath = path.join(__dirname, 'assets/1.png');
+        const imagePath = path.join(__dirname, '../assets/1.png');
 
         const info = await transporter.sendMail({
             from: `"Glow Investment" <${process.env.MAIL_USER}>`,
@@ -39,3 +41,5 @@ const sendVerifiedEmail = async (email, code) => {
         throw error;
     }
 };
+
+module.exports = sendVerifiedEmail

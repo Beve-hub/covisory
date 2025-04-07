@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs')
 const router = Router();
 const emailValidator = require('email-validator');
 const UserOTPVerification = require('../model/UserOtpVerify')
+const sendOTPVerificationEmail = require('../utils/sendOTP');
 
 
 
@@ -41,9 +42,13 @@ router.post('/register', async (req, res) => {
         const hashedPassword = await hashPassword(password);
         const newUser = new User({ firstName,lastName,userName,address, country, email, password: hashedPassword, verified: false });
         await newUser.save();
-        return res.status(201).json({ message: 'User registered successfully' });
+        
+        //send otp
+        await sendOTPVerificationEmail(newUser);
+        return res.status(201).json({ message: 'User registered successfully. Verification OTP sent to email.' });
 
-
+        
+       
     } catch (err) {
         console.error(err);
         return res.status(500).json({ message: 'Server error' });
@@ -86,6 +91,12 @@ router.post('/login', async (req, res) => {
         res.header('auth-token', token).send(token)
         // Send token in JSON format
         return res.json({ message: 'User logged in successfully', token });
+
+
+        if(!user.verified) {
+            await sendOTPVerificationEmail(user);
+            return res.status(403).json({message: 'Please verify your email. OTP has been sent'})
+        }
     } catch (err) {
         console.error(err);
         return res.status(500).json({ message: 'Server error' });
@@ -93,7 +104,7 @@ router.post('/login', async (req, res) => {
 });
 
 //verify OTP 
-router.post('/verifyOTP', async (res,req) => {
+router.post('/verifyOTP', async (req,res) => {
     try {
         const {userId, otp} = req.body
         if (!userId || !otp) {
