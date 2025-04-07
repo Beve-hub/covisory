@@ -1,13 +1,15 @@
 const nodemailer = require('nodemailer');
 const fs = require('fs').promises;
 const path = require('path');
+const dotenv = require('dotenv')
 
+dotenv.config(); 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: process.env.MAIL_HOST,
   secure: false,
     auth: {
-        user: 'victor.interface23@gmail.com',
-        pass: 'lawqjcddihybnezt'
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
     }
 });
 
@@ -21,7 +23,7 @@ const sendVerifiedEmail = async (email, code) => {
         const imagePath = path.join(__dirname, '../assets/1.png');
 
         const info = await transporter.sendMail({
-            from: `"Glow Investment" <${process.env.MAIL_USER}>`,
+            from: `"Gloria from Glow Investment" <${process.env.MAIL_USER}>`,
             to: email,
             subject: 'Your Verification Code',
             text: `Your verification code is ${code}`,
@@ -41,5 +43,8 @@ const sendVerifiedEmail = async (email, code) => {
         throw error;
     }
 };
+
+// send OTP verification email
+
 
 module.exports = sendVerifiedEmail

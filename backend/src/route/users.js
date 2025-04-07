@@ -71,7 +71,7 @@ router.get('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const { userName, email, password } = req.body;
-        const user = await User.findOne({  $or: [{ email }, { userName }] });
+        const user = await User.findOne({ $or: [{ email }, { userName }] });
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -81,27 +81,21 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Invalid password' });
         }
 
-        // Ensure TOKEN_SECRET is set
         if (!process.env.TOKEN_SECRET) {
             return res.status(500).json({ message: 'Server error: Missing TOKEN_SECRET' });
         }
 
-        // Generate token
+        // Generate and return token if verified
         const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
-        res.header('auth-token', token).send(token)
-        // Send token in JSON format
+        console.log('my token', token)
         return res.json({ message: 'User logged in successfully', token });
 
-
-        if(!user.verified) {
-            await sendOTPVerificationEmail(user);
-            return res.status(403).json({message: 'Please verify your email. OTP has been sent'})
-        }
     } catch (err) {
         console.error(err);
         return res.status(500).json({ message: 'Server error' });
     }
 });
+
 
 //verify OTP 
 router.post('/verifyOTP', async (req,res) => {
@@ -145,5 +139,102 @@ router.post('/verifyOTP', async (req,res) => {
     }
 })
 
+//resend OTP 
+router.post("/resendOTPVerification", async(req,res) => {
+    try {
+        const {userId, email} = req.body;
+        if (!userId || !email) {
+            return res.status(400).json({ message: 'Please provide user id and email' });
+        }
+        // Clear any existing OTPs
+        await UserOTPVerification.deleteMany({userId});
+
+        //Resend OTP and await the email function
+        await sendOTPVerificationEmail({_id: userId, email})
+
+         // Respond to client
+         return res.status(200).json({ message: 'OTP verification code resent successfully' });
+
+    }catch(error){
+        console.error('Error resending verificatiom:', error)
+        res.status(500).json({message: "Error resending verification"})
+    }
+})
+
+
+// Reset Password
+router.post('/reset-password', async(req,res) => {
+    try {
+        const {token, newPassword} = req.body;
+
+        if (!token || !newPassword) {
+            return res.status(400).json({message: 'Token and new password are required'});
+        }
+
+        //verify the token
+        const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+        const userId = decoded._id;
+
+        // validate new password
+        if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(newPassword)) {
+            return res.status(400).json({ message: 'Password must meet complexity requirements' });
+        }
+
+        // Hash the new password
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        //Update the user's password
+        await User.updateOne({_id: userId}, {password: hashPassword});
+        
+        res.json({message: 'Password update successfully'});
+
+    }catch(err) {
+        console.error('Error resetting password:', error);
+        res.status(500).json({message: "Server error"})
+    }
+})
+
+//update password
+router.post('/change-password', async (req, res) => {
+    try {
+        const {userId, oldPassword, newPassword} = req.body;
+
+        if(!userId || !oldPassword || !newPassword) {
+            return res.status(400).json({message: 'Please provide all required fields'})
+        }
+
+        // Find the user
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({message: 'User not found'});
+        };
+
+        //verify old password
+        const isMatch = await bcrypt.compare(oldPassword, user.password);
+        if (!isMatch) {
+            return res.status(400).json({message: 'old password is incorrect'})
+        }
+
+        // validate new password
+        if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(newPassword)) {
+            return res.status(400).json({ message: 'Password must meet complexity requirements' });
+        }
+
+
+        // Hash the new password
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        // Update the user's password
+        user.password = hashedPassword;
+        await user.save();
+
+
+        res.json({message: 'Password update successfully'})
+
+    } catch (error) {
+        console.error('Error updating password:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}) 
 
 module.exports = router;
