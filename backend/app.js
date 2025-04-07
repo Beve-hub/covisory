@@ -16,7 +16,10 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
   ssl: true,
   serverSelectionTimeoutMS: 10000,
-}).then(() => console.log("Connected to MongoDB"))
+}).then(
+  () => {
+    console.log('✅ MongoDB connected');
+  })
   .catch(err => console.error("MongoDB connection error:", err));
 
 
