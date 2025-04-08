@@ -1,40 +1,73 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const withdrawSchema = new mongoose.Schema({
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-    amount: {
-        type: Number,
-        require: true
-    }, 
-    currency: {
-        type: String,
-        enum: ['NGN', 'BTC', 'USDT', 'ETH', 'BNB'],
-        required: true
-    },
-    network: {
-        type: String,
-        enum: ['Bitcoin', 'ERC20', 'TRC20', 'BEP20', 'TON', 'TRON', 'Bank Transfer'],
-        required: true
-    },
-    status: {
-        type: String,
-        enum: ['pending', 'completed', 'failed'],
-        default: 'pending'
-      },
-      bankDetails: {
-        accountNumber: String,
-        accountName: String
-      },
-      walletAddress: String, // For crypto withdrawals
-      transactionHash: String,
-      createdAt: {
-        type: Date,
-        default: Date.now
+const withdrawalSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
+  },
+  amount: {
+    type: Number,
+    required: true,
+    min: [100, 'Minimum withdrawal amount is 100 NGN']
+  },
+  currency: {
+    type: String,
+    required: true,
+    enum: ['NGN'],
+    default: 'NGN'
+  },
+  bankDetails: {
+    accountNumber: {
+      type: String,
+      required: [true, 'Account number is required'],
+      validate: {
+        validator: function(v) {
+          return /^\d{10}$/.test(v);
+        },
+        message: props => `${props.value} is not a valid Nigerian account number!`
       }
+    },
+    accountName: {
+      type: String,
+      required: [true, 'Account name is required']
+    },
+    bankName: {
+      type: String,
+      required: true
+    }
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'processing', 'success', 'failed'],
+    default: 'pending'
+  },
+  transferCode: {
+    type: String
+  },
+  failureReason: {
+    type: String
+  },
+  reference: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date
+  }
+}, {
+  timestamps: true
+});
+
+// Pre-save hook to update timestamp
+withdrawalSchema.pre('save', function(next) {
+  this.updatedAt = new Date();
+  next();
 });
 
 module.exports = mongoose.model('Withdrawal', withdrawalSchema);

@@ -12,12 +12,12 @@ const depositSchema = new mongoose.Schema({
     },
     currency: {
         type: String,
-        enum: ['NGN', 'BTC', 'USDT', 'ETH', 'BNB'],
+        enum: ['NGN'],
         required: true
     },
     network: {
         type: String,
-        enum: ['Bitcoin', 'ERC20', 'TRC20', 'BEP20', 'TON', 'TRON', 'Paystack'],
+        enum: [ 'Paystack'],
         required: true
     },
     status: {
@@ -25,13 +25,19 @@ const depositSchema = new mongoose.Schema({
         enum: ['pending', 'completed', 'failed'],
         default: 'pending'
       },
-    transactionHash: String, // For crypto deposits
-    paystackReference: String, // For Naira deposits
-    walletAddress: String, // For crypto deposits
-    createdAt: {
-      type: Date,
-      default: Date.now
-    }
+      reference: {
+        type: String,
+        required: true,
+        unique: true
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now
+      },
+      updatedAt: {
+        type: Date,
+        default: Date.now
+      }
 })
 
 module.exports = mongoose.model('Deposit', depositSchema);
