@@ -2,18 +2,13 @@ const { Router } = require('express');
 const router = Router();
 const Conversion = require('../model/Conversion');
 const axios = require('axios');
-const Conversion = require('../model/Conversion');
+const {getExchangeRate} = require('../utils/exchangeRate')
 
-const API_KEY = process.env.EXCHANGE_API_KEY;
-const EXCHANGE_API_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair`;
-
-
-const validCurrencies = ['NGN', 'BTC', 'ETH', 'USDT', 'BNB', 'XRP'];
 
 router.post('/convert', async(req, res) => {
     try {
         
-    const { fromAmount, fromCurrency, toCurrency } = req.body;
+    const { fromCurrency, toCurrency, fromAmount } = req.body;
     const userId = req.user._id;
 
     if (!validCurrencies.includes(fromCurrency) || !validCurrencies.includes(toCurrency)) {
@@ -89,6 +84,6 @@ async function getUserBalance(userId, currency) {
   }
   
   async function processConversion(userId, fromAmount, fromCurrency, toAmount, toCurrency) {
-    
+
     return true;
   }

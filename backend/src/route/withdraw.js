@@ -3,6 +3,9 @@ const router = Router();
 const Withdraw = require('../model/WithdrawSchema');
 
 
+// Cache for bank list
+let bankList = []
+
 router.post('/withdraw', async(req, res) => {
  const {userId, amount, currency, accountNumber, accountName} = req.body
  try {
@@ -12,7 +15,8 @@ router.post('/withdraw', async(req, res) => {
         currency: 'NGN',
         bankDetails: {
           accountNumber,
-          accountName
+          accountName,
+          bankName
         },
         reference: `WDL-${Date.now()}`
       });
