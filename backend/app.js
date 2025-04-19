@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const users = require('./src/route/users')
 const dotenv = require('dotenv')
 
+const deposit = require('./src/route/deposit')
+const withdraw = require('./src/route/withdraw')
+
 dotenv.config(); 
 
 const app = express();
