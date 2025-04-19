@@ -43,3 +43,5 @@ router.get('/deposit', async(req, res) => {
     const deposit = await Deposit.find();
     res.json(deposit);
 })
+
+module.exports = router;

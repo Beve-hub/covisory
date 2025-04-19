@@ -59,3 +59,5 @@ router.get('/withdraw', async(req, res) => {
     const withdrawals = await Withdraw.find();
     res.json(withdrawals);
 })
+
+module.exports = router;

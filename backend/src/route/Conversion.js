@@ -91,3 +91,5 @@ async function getUserBalance(userId, currency) {
 
     return true;
   }
+
+  module.exports = router;
