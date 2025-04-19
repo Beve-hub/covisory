@@ -2,9 +2,11 @@ const { Router } = require('express');
 const router = Router();
 const Deposit = require('../model/DepositSchema')
 const {initializeTransaction} = require('../utils/payStackConfig');
+const verifyToken = require('./verifyToken');
 
 
-router.post('/deposit', async({req, res}) => {
+
+router.post('/deposit',verifyToken, async(req, res) => {
     const {userId, email, amount, currency} = req.body;
 
     try {
@@ -28,7 +30,7 @@ router.post('/deposit', async({req, res}) => {
                 deposit
             });
         }else {
-            const deposit = await Deposit.create({userId, amount, currency, network});
+            const deposit = await Deposit.create({userId, amount, currency});
             res.status(201).json(deposit);
         }
     }catch(error){

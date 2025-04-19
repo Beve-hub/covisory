@@ -1,18 +1,28 @@
 const { Router } = require('express');
 const router = Router();
 const Withdraw = require('../model/WithdrawSchema');
+const verifyToken = require('./verifyToken');
+const nigerianBanks = require('../utils/banks');
 
 
-// Cache for bank list
-let bankList = []
 
-router.post('/withdraw', async(req, res) => {
- const {userId, amount, currency, accountNumber, accountName} = req.body
+router.post('/withdraw',verifyToken, async(req, res) => {
+
+ const {amount, currency = 'NGN', accountNumber, accountName, bankName} = req.body
+
+ if (!amount || !accountName || !accountNumber || !bankName) {
+  return res.status(400).json({error: 'missing input field'})
+ }
+
+ const availableBank = nigerianBanks.some(bank => bank.name === bankName)
+ if (availableBank) {
+  return res.status(400).json({error: 'bank name is missing'})
+ }
  try {
-    const withdrawal = new Withdrawal({
+    const withdrawal = new Withdraw({
         userId: req.user._id,
         amount,
-        currency: 'NGN',
+        currency,
         bankDetails: {
           accountNumber,
           accountName,

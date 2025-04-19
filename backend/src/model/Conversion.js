@@ -12,7 +12,7 @@ const conversionSchema = new mongoose.Schema({
     },
     fromCurrency: {
         type: String,
-        enum: ['NGN', 'BTC', 'USDT', 'ETH', 'BNB'],
+        enum: ['NGN', 'USD', 'EUR', 'GBP'],
         required: true
     },
     toAmount: {
@@ -21,7 +21,7 @@ const conversionSchema = new mongoose.Schema({
     },
     toCurrency: {
         type: String,
-        enum: ['NGN', 'BTC', 'USDT', 'ETH', 'BNB'],
+        enum: ['NGN','USD', 'EUR', 'GBP'],
         required: true
     },
     rate: {
