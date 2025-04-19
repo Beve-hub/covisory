@@ -3,6 +3,7 @@ const router = Router();
 const Withdraw = require('../model/WithdrawSchema');
 const verifyToken = require('./verifyToken');
 const nigerianBanks = require('../utils/banks');
+const Conversion = require('../model/Conversion');
 
 
 
@@ -15,10 +16,25 @@ router.post('/withdraw',verifyToken, async(req, res) => {
  }
 
  const availableBank = nigerianBanks.some(bank => bank.name === bankName)
- if (availableBank) {
+ if (!availableBank) {
   return res.status(400).json({error: 'bank name is missing'})
  }
+
+ if (currency !== 'NGN') {
+    return res.status(400).json({error: 'withdawal only allow NGN'})
+ }
+
  try {
+   const conversion = await Conversion.findOne({
+    userId: req.user._id,
+    toCurrency: 'NGN',
+    status: 'completed'
+   }).sort({ createdAt: -1 });
+
+   if (!conversion || conversion.toAmount < amount) {
+     return res.status(400).json({ error: 'Insufficient converted funds in NGN' });
+   }
+
     const withdrawal = new Withdraw({
         userId: req.user._id,
         amount,

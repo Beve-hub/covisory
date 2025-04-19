@@ -81,8 +81,10 @@ async function getExchangeRate(fromCurrency, toCurrency) {
     return null
  }   
 }
+
+
 async function getUserBalance(userId, currency) {
-    return 1000; // Mocked balance
+    return 1000;
   }
   
   async function processConversion(userId, fromAmount, fromCurrency, toAmount, toCurrency) {
