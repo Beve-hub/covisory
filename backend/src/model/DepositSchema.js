@@ -12,7 +12,7 @@ const depositSchema = new mongoose.Schema({
     },
     currency: {
         type: String,
-        enum: 'NGN',
+        enum: ['NGN'],
         required: true
     },
     status: {
