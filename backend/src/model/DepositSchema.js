@@ -12,24 +12,15 @@ const depositSchema = new mongoose.Schema({
     },
     currency: {
         type: String,
-        enum: ['NGN'],
+        enum: 'NGN',
         required: true
     },
-    //network: {
-        //type: String,
-        //enum: [ 'Paystack'],
-      //  required: true
-    //},
     status: {
         type: String,
         enum: ['pending', 'completed', 'failed'],
         default: 'pending'
       },
-     // reference: {
-      //  type: String,
-      //  required: true,
-      //  unique: true
-      //},
+     
       createdAt: {
         type: Date,
         default: Date.now
