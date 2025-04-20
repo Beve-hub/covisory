@@ -7,13 +7,13 @@ const verifyToken = require('./verifyToken');
 
 
 router.post('/deposit',verifyToken, async(req, res) => {
-    const {userId, email, amount, currency} = req.body;
-
+    const { email, amount, currency} = req.body;
+    const userId = req.user._id;
     try {
         if(currency === "NGN") {
             const initRes = await initializeTransaction({email, amount});
             const deposit = await Deposit.create({
-                userId:req.user._id,
+                userId,
                 amount,
                 currency,
                 network: 'Paystack',
