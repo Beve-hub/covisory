@@ -40,8 +40,9 @@ const depositSchema = new mongoose.Schema({
 
 depositSchema.index(
   { reference: 1 },
-  { unique: true, partialFilterExpression: { reference: { $type: 'string' } } }
+  { unique: true, partialFilterExpression: { reference: { $exists: true, $ne: null } } }
 );
+
 
 function generateTransactionId(length = 15) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
