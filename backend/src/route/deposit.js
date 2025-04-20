@@ -6,7 +6,7 @@ const verifyToken = require('./verifyToken');
 
 
 
-router.post('/deposit',verifyToken, async(req, res) => {
+router.post('/deposit', async(req, res) => {
     const {userId, email, amount, currency} = req.body;
 
     try {
