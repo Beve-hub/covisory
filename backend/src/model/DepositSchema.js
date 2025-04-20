@@ -1,3 +1,4 @@
+// model/DepositSchema.js
 const mongoose = require('mongoose');
 
 const depositSchema = new mongoose.Schema({
@@ -19,19 +20,29 @@ const depositSchema = new mongoose.Schema({
         type: String,
         enum: ['pending', 'completed', 'failed'],
         default: 'pending'
-      },
-     transactionId:{
-      type: String
-     },
-      createdAt: {
+    },
+    transactionId: {
+        type: String
+    },
+    reference: {
+        type: String,
+        default: null
+    },
+    createdAt: {
         type: Date,
         default: Date.now
-      },
-      updatedAt: {
+    },
+    updatedAt: {
         type: Date,
         default: Date.now
-      }
-})
+    }
+});
+
+depositSchema.index(
+  { reference: 1 },
+  { unique: true, partialFilterExpression: { reference: { $type: 'string' } } }
+);
+
 function generateTransactionId(length = 15) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let id = '';
@@ -47,4 +58,5 @@ depositSchema.pre('save', function (next) {
   }
   next();
 });
+
 module.exports = mongoose.model('Deposit', depositSchema);
