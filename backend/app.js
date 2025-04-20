@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 
 const deposit = require('./src/route/deposit')
 const withdraw = require('./src/route/withdraw')
+const balance = require('./src/route/balance')
 
 dotenv.config(); 
 
@@ -38,5 +39,5 @@ app.get('/', (req, res, next) => {
 app.use('/api/users', users )
 app.use('/api/deposit', deposit)
 app.use('/api/withdraw', withdraw)
-
+app.use('/api/balance', balance)
 module.exports = app;

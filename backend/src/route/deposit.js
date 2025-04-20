@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const Deposit = require('../model/DepositSchema')
 const verifyToken = require('./verifyToken');
+const wallet = require('../model/Wallet')
 
 
 
@@ -15,6 +16,15 @@ router.post('/deposit',verifyToken, async(req, res) => {
             currency,
             transactionId
         });
+
+        await wallet.findOneAndUpdate(
+            { userId },
+            {
+              $inc: { balanceNGN: amount },
+              $set: { updatedAt: new Date() }
+            },
+            { upsert: true }
+          );
 
         res.status(201).json(deposit);
     }catch(error){

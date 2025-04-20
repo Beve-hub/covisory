@@ -48,6 +48,11 @@ const withdrawalSchema = new mongoose.Schema({
   failureReason: {
     type: String
   },
+  transactionId:{
+    type: String,
+    required: true,
+    unique: true
+   },
   reference: {
     type: String,
     required: true,
@@ -63,10 +68,21 @@ const withdrawalSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
+function generateTransactionId(length = 15) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let id = '';
+  for (let i = 0; i < length; i++) {
+    id += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return id;
+}
 
 // Pre-save hook to update timestamp
 withdrawalSchema.pre('save', function(next) {
   this.updatedAt = new Date();
+  if (!this.transactionId) {
+    this.transactionId = generateTransactionId();
+  }
   next();
 });
 

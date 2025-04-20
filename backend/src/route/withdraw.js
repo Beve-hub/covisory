@@ -4,12 +4,13 @@ const Withdraw = require('../model/WithdrawSchema');
 const verifyToken = require('./verifyToken');
 const nigerianBanks = require('../utils/banks');
 const Conversion = require('../model/Conversion');
+const Wallet = require('../model/Wallet')
 
 
 
 router.post('/withdraw',verifyToken, async(req, res) => {
 
- const {amount, currency = 'NGN', accountNumber, accountName, bankName} = req.body
+ const {amount, currency = 'NGN', accountNumber, accountName, bankName, transactionId} = req.body
 
  if (!amount || !accountName || !accountNumber || !bankName) {
   return res.status(400).json({error: 'missing input field'})
@@ -25,20 +26,21 @@ router.post('/withdraw',verifyToken, async(req, res) => {
  }
 
  try {
-   const conversion = await Conversion.findOne({
-    userId: req.user._id,
-    toCurrency: 'NGN',
-    status: 'completed'
-   }).sort({ createdAt: -1 });
+  const wallet = await Wallet.findOne({userId: req.user._id});
+  if (!wallet || wallet.balanceNGN < amount){
+    return res.status(400).json({error: 'Insufficient balance'})
+  }
 
-   if (!conversion || conversion.toAmount < amount) {
-     return res.status(400).json({ error: 'Insufficient converted funds in NGN' });
-   }
+  wallet.balanceNGN -= amount;
+  wallet.updatedAt = new Date();
+  await wallet.save();
 
+  
     const withdrawal = new Withdraw({
         userId: req.user._id,
         amount,
         currency,
+        transactionId,
         bankDetails: {
           accountNumber,
           accountName,

@@ -21,7 +21,7 @@ const depositSchema = new mongoose.Schema({
         default: 'pending'
       },
      transactionId:{
-      type: String,
+      type: String
      },
       createdAt: {
         type: Date,
@@ -32,7 +32,7 @@ const depositSchema = new mongoose.Schema({
         default: Date.now
       }
 })
-function generateTransactionId(length = 11) {
+function generateTransactionId(length = 15) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let id = '';
   for (let i = 0; i < length; i++) {
