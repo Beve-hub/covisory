@@ -6,13 +6,14 @@ const verifyToken = require('./verifyToken');
 
 
 router.post('/deposit',verifyToken, async(req, res) => {
-    const { amount, currency = 'NGN'} = req.body;
+    const { amount, currency = 'NGN',transactionId} = req.body;
     const userId = req.user._id;
     try {
         const deposit = await Deposit.create({
             userId,
             amount,
             currency,
+            transactionId
         });
 
         res.status(201).json(deposit);
@@ -26,5 +27,6 @@ router.get('/deposit', async(req, res) => {
     const deposit = await Deposit.find();
     res.json(deposit);
 })
+
 
 module.exports = router;
