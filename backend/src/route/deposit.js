@@ -6,7 +6,7 @@ const verifyToken = require('./verifyToken');
 
 
 router.post('/deposit',verifyToken, async(req, res) => {
-    const { email, amount, currency} = req.body;
+    const { amount, currency = 'NGN'} = req.body;
     const userId = req.user._id;
     try {
         const deposit = await Deposit.create({
