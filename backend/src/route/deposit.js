@@ -12,9 +12,8 @@ router.post('/deposit', async(req, res) => {
     try {
         if(currency === "NGN") {
             const initRes = await initializeTransaction({email, amount});
-
             const deposit = await Deposit.create({
-                userId,
+                userId:req.user._id,
                 amount,
                 currency,
                 network: 'Paystack',
