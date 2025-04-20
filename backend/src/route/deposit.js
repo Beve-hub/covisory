@@ -16,18 +16,18 @@ router.post('/deposit',verifyToken, async(req, res) => {
                 userId,
                 amount,
                 currency,
-                network: 'Paystack',
+               // network: 'Paystack',
                 reference: initRes.data.reference,
             });
 
             await deposit.save();
 
-            return res.status(200).json({
-                message: "Paystack payment initiated",
-                authorization_url: initRes.data.authorization_url,
-                reference: initRes.data.reference,
-                deposit
-            });
+            //return res.status(200).json({
+              //  message: "Paystack payment initiated",
+              //  authorization_url: initRes.data.authorization_url,
+            //    reference: initRes.data.reference,
+            //    deposit
+           // });
         }else {
             const deposit = await Deposit.create({userId, amount, currency});
             res.status(201).json(deposit);

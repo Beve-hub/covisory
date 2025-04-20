@@ -15,11 +15,11 @@ const depositSchema = new mongoose.Schema({
         enum: ['NGN'],
         required: true
     },
-    network: {
-        type: String,
-        enum: [ 'Paystack'],
-        required: true
-    },
+    //network: {
+        //type: String,
+        //enum: [ 'Paystack'],
+      //  required: true
+    //},
     status: {
         type: String,
         enum: ['pending', 'completed', 'failed'],
