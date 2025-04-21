@@ -26,7 +26,10 @@ const depositSchema = new mongoose.Schema({
   },
   reference: {
     type: String, // removed `default: null`
-    required: false
+    required: false,
+    index:true, 
+    unique:true,
+    sparse:true
   },
   createdAt: {
     type: Date,
