@@ -24,6 +24,13 @@ const depositSchema = new mongoose.Schema({
   transactionId: {
     type: String
   },
+  reference: {
+    type: String, // removed `default: null`
+    required: false,
+    index:true, 
+    unique:true,
+    sparse:true
+  },
   createdAt: {
     type: Date,
     default: Date.now
@@ -34,6 +41,15 @@ const depositSchema = new mongoose.Schema({
   }
 });
 
+depositSchema.index(
+  { reference: 1 },
+  {
+    unique: true,
+    partialFilterExpression: {
+      reference: { $exists: true, $ne: null }
+    }
+  }
+);
 
 function generateTransactionId(length = 15) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
