@@ -38,6 +38,6 @@ app.get('/', (req, res, next) => {
 //import route
 app.use('/api/users', users )
 app.use('/api/deposit', deposit)
-app.use('/api/withdraw', withdrawals)
+app.use('/api/withdraw', withdraw)
 app.use('/api/balance', balance)
 module.exports = app;
