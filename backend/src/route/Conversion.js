@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const router = Router();
 const Conversion = require('../model/Conversion');
-
 const {getExchangeRate} = require('../utils/exchangeRate');
 const Wallet = require('../model/Wallet');
 
