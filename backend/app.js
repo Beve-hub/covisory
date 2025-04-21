@@ -41,5 +41,5 @@ app.use('/api/users', users )
 app.use('/api/deposit', deposit)
 app.use('/api/withdraw', withdraw)
 app.use('/api/balance', balance)
-app.use('/api/convert', convert)
+app.use('/api/conversion', convert)
 module.exports = app;
