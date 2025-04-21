@@ -84,17 +84,17 @@ router.get('/convert', async(req,res) => {
     }
 })
 
-async function getExchangeRate(fromCurrency, toCurrency) {
-    try {
-        const url = `${EXCHANGE_API_URL}/${fromCurrency}/${toCurrency}`;
-        const {data} = await axios.get(url);
-        if (data&& data.conversion_rate) return data.conversion_rate
-        return null;
- } catch (error) {
-    console.error('Exchange rate error:', error);
-    return null
- }   
-}
+//async function getExchangeRate(fromCurrency, toCurrency) {
+//    try {
+//        const url = `${EXCHANGE_API_URL}/${fromCurrency}/${toCurrency}`;
+//        const {data} = await axios.get(url);
+//        if (data&& data.conversion_rate) return data.conversion_rate
+//        return null;
+// } catch (error) {
+//    console.error('Exchange rate error:', error);
+//    return null
+// }   
+// }
 
 
 async function getUserBalance(userId, currency) {
