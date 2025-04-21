@@ -1,48 +1,48 @@
-// model/DepositSchema.js
 const mongoose = require('mongoose');
 
 const depositSchema = new mongoose.Schema({
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-    amount: {
-        type: Number,
-        required: true
-    },
-    currency: {
-        type: String,
-        enum: ['NGN'],
-        required: true
-    },
-    status: {
-        type: String,
-        enum: ['pending', 'completed', 'failed'],
-        default: 'pending'
-    },
-    transactionId: {
-        type: String
-    },
-    reference: {
-        type: String,
-        default: null
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    }
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  amount: {
+    type: Number,
+    required: true
+  },
+  currency: {
+    type: String,
+    enum: ['NGN'],
+    required: true
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'completed', 'failed'],
+    default: 'pending'
+  },
+  transactionId: {
+    type: String
+  },
+  reference: {
+    type: String // Removed default: null
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 depositSchema.index(
   { reference: 1 },
-  { unique: true, partialFilterExpression: { reference: { $exists: true, $ne: null } } }
+  {
+    unique: true,
+    partialFilterExpression: { reference: { $exists: true, $ne: null } }
+  }
 );
-
 
 function generateTransactionId(length = 15) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
