@@ -3,10 +3,11 @@ const router = Router();
 const Conversion = require('../model/Conversion');
 const {getExchangeRate} = require('../utils/exchangeRate');
 const Wallet = require('../model/Wallet');
+const verifyToken = require('./verifyToken');
 
 
 
-router.post('/convert', async(req, res) => {
+router.post('/convert',verifyToken, async(req, res) => {
     try {
         
     const { fromCurrency, toCurrency, fromAmount } = req.body;
