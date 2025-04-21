@@ -6,7 +6,7 @@ const { getExchangeRate } = require('../utils/exchangeRate');
 const Wallet = require('../model/Wallet');
 const verifyToken = require('./verifyToken');
 
-const validCurrencies = ['USD', 'EUR', 'GBP', 'JPY', 'BTC', 'ETH']; // example
+const validCurrencies = ['NGN','USD', 'EUR', 'GBP', 'JPY', 'BTC', 'ETH']; // example
 
 router.post('/convert', verifyToken, async (req, res) => {
   try {
