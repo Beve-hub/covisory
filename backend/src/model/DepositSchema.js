@@ -1,3 +1,4 @@
+// model/DepositSchema.js
 const mongoose = require('mongoose');
 
 const depositSchema = new mongoose.Schema({
@@ -24,7 +25,8 @@ const depositSchema = new mongoose.Schema({
     type: String
   },
   reference: {
-    type: String // Removed default: null
+    type: String, // removed `default: null`
+    required: false
   },
   createdAt: {
     type: Date,
@@ -40,7 +42,9 @@ depositSchema.index(
   { reference: 1 },
   {
     unique: true,
-    partialFilterExpression: { reference: { $exists: true, $ne: null } }
+    partialFilterExpression: {
+      reference: { $exists: true, $ne: null }
+    }
   }
 );
 
