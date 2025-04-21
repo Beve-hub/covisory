@@ -7,14 +7,14 @@ const wallet = require('../model/Wallet')
 
 
 router.post('/deposit',verifyToken, async(req, res) => {
-    const { amount, currency = 'NGN',transactionId} = req.body;
+    const { amount, currency = 'NGN',reference} = req.body;
     const userId = req.user._id;
     try {
         const deposit = await Deposit.create({
             userId,
             amount,
             currency,
-            transactionId
+            reference
         });
 
         await wallet.findOneAndUpdate(
