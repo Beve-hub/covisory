@@ -20,6 +20,9 @@ const depositSchema = new mongoose.Schema({
     enum: ['pending', 'completed', 'failed'],
     default: 'pending'
   },
+  transactionId: {
+    type: String,
+  },
   reference: {
     type: String,
   },
@@ -41,5 +44,20 @@ depositSchema.index(
   }
 );
 
+function generateTransactionId(length = 15) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let id = '';
+  for (let i = 0; i < length; i++) {
+    id += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return id;
+}
+
+depositSchema.pre('save', function (next) {
+  if (!this.transactionId) {
+    this.transactionId = generateTransactionId();
+  }
+  next();
+});
 
 module.exports = mongoose.model('Deposit', depositSchema);
