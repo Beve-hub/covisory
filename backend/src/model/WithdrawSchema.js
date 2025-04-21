@@ -50,8 +50,6 @@ const withdrawalSchema = new mongoose.Schema({
   },
   transactionId:{
     type: String,
-    required: true,
-    unique: true
    },
   reference: {
     type: String,
