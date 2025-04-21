@@ -11,7 +11,6 @@ router.post('/convert',verifyToken, async(req, res) => {
     try {
         
     const { fromCurrency, toCurrency, fromAmount } = req.body;
-    const userId = req.user._id;
 
     if (!validCurrencies.includes(fromCurrency) || !validCurrencies.includes(toCurrency)) {
         return res.status(400).json({ error: 'Invalid currency' });
@@ -48,7 +47,7 @@ router.post('/convert',verifyToken, async(req, res) => {
 
 
     const conversion = new Conversion({
-        userId,
+        userId: req.user._id,
         fromAmount,
         fromCurrency,
         toAmount,
