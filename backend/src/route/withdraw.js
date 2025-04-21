@@ -3,7 +3,6 @@ const router = Router();
 const Withdraw = require('../model/WithdrawSchema');
 const verifyToken = require('./verifyToken');
 const nigerianBanks = require('../utils/banks');
-const Conversion = require('../model/Conversion');
 const Wallet = require('../model/Wallet')
 
 
@@ -36,7 +35,7 @@ router.post('/withdraw',verifyToken, async(req, res) => {
   await wallet.save();
 
   
-    const withdrawal = new Withdraw({
+    const withdraw = new Withdraw({
         userId: req.user._id,
         amount,
         currency,
@@ -49,7 +48,7 @@ router.post('/withdraw',verifyToken, async(req, res) => {
         reference: `WDL-${Date.now()}`
       });
 
-      await withdrawal.save();
+      await withdraw.save();
     
  } catch (error) {
     res.status(400).json({error: error.message})

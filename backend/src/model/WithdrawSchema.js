@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const withdrawalSchema = new mongoose.Schema({
+const withdrawSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
@@ -84,4 +84,4 @@ withdrawalSchema.pre('save', function(next) {
   next();
 });
 
-module.exports = mongoose.model('Withdrawal', withdrawalSchema);
+module.exports = mongoose.model('Withdraw', withdrawSchema);
