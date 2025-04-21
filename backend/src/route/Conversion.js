@@ -2,7 +2,8 @@ const { Router } = require('express');
 const router = Router();
 const Conversion = require('../model/Conversion');
 const axios = require('axios');
-const {getExchangeRate} = require('../utils/exchangeRate')
+const {getExchangeRate} = require('../utils/exchangeRate');
+const Wallet = require('../model/Wallet');
 
 
 
@@ -33,6 +34,19 @@ router.post('/convert', async(req, res) => {
     if (balance < fromAmount) {
         return res.status(400).json({ error: "Insufficient balance"});
     }
+
+
+    const fromBalanceField = `balance${fromCurrency}`;
+    
+    const wallet = await Wallet.findOne({userId: req.user._id});
+    if (!wallet || wallet[fromBalanceField] < fromAmount) {
+        return res.status(400).json({error: 'insufficient balance'})
+    }
+
+    if (!wallet || wallet[fromBalanceField] === undefined) {
+        return res.status(400).json({error: 'Currency is missing or not define'})
+    }
+
 
     const conversion = new Conversion({
         userId,
@@ -87,8 +101,11 @@ async function getUserBalance(userId, currency) {
     return 1000;
   }
   
-  async function processConversion(userId, fromAmount, fromCurrency, toAmount, toCurrency) {
-
+  async function processConversion(wallet, fromAmount, fromCurrency, toAmount, toCurrency) {
+    const fromBalanceField = `balance${fromCurrency}`;
+    const toBalanceField = `balance${toCurrency}`;
+    wallet[fromBalanceField] -= fromAmount;
+    wallet[toBalanceField] = (wallet[fromBalanceField || 0]) + toAmount
     return true;
   }
 
