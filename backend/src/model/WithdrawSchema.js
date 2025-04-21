@@ -76,7 +76,7 @@ function generateTransactionId(length = 15) {
 }
 
 // Pre-save hook to update timestamp
-withdrawalSchema.pre('save', function(next) {
+withdrawSchema.pre('save', function(next) {
   this.updatedAt = new Date();
   if (!this.transactionId) {
     this.transactionId = generateTransactionId();
