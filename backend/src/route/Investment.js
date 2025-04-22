@@ -33,10 +33,7 @@ router.post('/buy', verifyToken, async (req, res) => {
       return res.status(400).json({ error: 'Insufficient wallet balance' });
 
     const balanceKey = `${plan}_${currency}`; // <-- dynamic balance key
-    const existing = await Investment.findOne({ userId, plan, currency, status: 'active' });
-    if (existing)
-      return res.status(400).json({ error: `Active investment exists for ${plan} in ${currency}` });
-
+    
     wallet[balanceField] -= amount;
     await wallet.save();
 
