@@ -3,7 +3,7 @@ const router = Router();
 const Plan = require('../utils/planConfig');
 const Wallet = require('../model/Wallet');
 const InvestmentBalance = require('../model/investmentBalanceSchema');
-const Investment = require('../model/Investment'); // fixed
+const Investment = require('../model/InvestmentSchema'); // fixed
 const verifyToken = require('./verifyToken');
 
 
