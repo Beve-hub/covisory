@@ -68,7 +68,7 @@ function generateTransactionId(length = 20) {
     return id;
   }
   
-  depositSchema.pre('save', function (next) {
+  investmentSchema.pre('save', function (next) {
     if (!this.transactionId) {
       this.transactionId = generateTransactionId();
     }
