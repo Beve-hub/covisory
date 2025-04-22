@@ -4,14 +4,10 @@ const Wallet = require('../model/Wallet');
 const InvestmentBalance = require('../model/investmentBalanceSchema');
 const Investment = require('../model/InvestmentSchema'); // fixed
 const verifyToken = require('./verifyToken');
+const planConfig = require('../utils/planConfig')
 
 
-const planConfig = {
-    Emergency: { min: 10, max: 50000, duration: 30, profitPercent: 0.4 },
-    Standard: { min: 100, max: 5000, duration: 60, profitPercent: 0.6 },
-    Prime: { min: 5001, max: 50000, duration: 90, profitPercent: 0.8 },
-    Shareholder: { min: 50000, max: 500000, duration: 180, profitPercent: 1.2 },
-  };
+
 
 
 const validCurrencies = ['NGN', 'USD', 'EUR', 'GBP'];
@@ -41,7 +37,7 @@ router.post('/buy', verifyToken, async(req,res) => {
            return res.status(400).json({ error: 'Insufficient wallet balance' });
          }
      
-         const existingInvestment = await investment.findOne({ userId, currency, status: 'active' });
+         const existingInvestment = await Investment.findOne({ userId, currency, status: 'active' });
          if (existingInvestment) {
            return res.status(400).json({ error: `You already have an active investment in ${currency}` });
          }
