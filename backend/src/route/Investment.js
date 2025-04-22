@@ -4,10 +4,14 @@ const Wallet = require('../model/Wallet');
 const InvestmentBalance = require('../model/investmentBalanceSchema');
 const Investment = require('../model/InvestmentSchema'); // fixed
 const verifyToken = require('./verifyToken');
-const planConfig = require('../utils/planConfig')
 
 
-
+const planConfig = {
+    Emergency: { min: 10, max: 50000, duration: 30, profitPercent: 0.4 },
+    Standard: { min: 100, max: 5000, duration: 60, profitPercent: 0.6 },
+    Prime: { min: 5001, max: 50000, duration: 90, profitPercent: 0.8 },
+    Shareholder: { min: 50000, max: 500000, duration: 180, profitPercent: 1.2 },
+  };
 
 
 const validCurrencies = ['NGN', 'USD', 'EUR', 'GBP'];
@@ -17,20 +21,15 @@ router.post('/buy', verifyToken, async(req,res) => {
         const {plan, amount, currency} = req.body
         const userId = req.user._id;
 
-        const planKey = Object.keys(planConfig).find(
-            p => p.toLowerCase() === plan.toLowerCase()
-          );
-          if (!planKey) {
-            return res.status(400).json({ error: "Invalid plan" });
-          }
-         
-          
+        if (!planConfig[plan]) {
+            return res.status(400).json({error: "Invalid plan"});
+        }
 
         if (!validCurrencies.includes(currency)) {
             return res.status(400).json({ error: 'Invalid currency' });
         }
 
-        const { min, max, duration, profitPercent } = planConfig[planKey];
+        const { min, max, duration, profitPercent } = planConfig[plan];
 
          if (amount < min || amount > max) {
           return res.status(400).json({ error: `Amount must be between ${min} and ${max}` });
