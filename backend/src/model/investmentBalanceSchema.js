@@ -8,7 +8,7 @@ const investmentBalanceSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  NGN: { type: Map, of: Number,default: {} },
+  balances: { type: Map, of: Number,default: {} },
   updatedAt: {
     type: Date,
     default: Date.now
