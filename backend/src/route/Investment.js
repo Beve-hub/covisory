@@ -2,7 +2,7 @@
 const { Router } = require('express');
 const router = Router();
 const Wallet = require('../model/Wallet');
-const InvestmentBalance = require('../model/InvestmentBalance');
+const InvestmentBalance = require('../model/investmentBalanceSchema');
 const Investment = require('../model/InvestmentSchema');
 const verifyToken = require('./verifyToken');
 
