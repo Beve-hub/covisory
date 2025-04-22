@@ -17,15 +17,20 @@ router.post('/buy', verifyToken, async(req,res) => {
         const {plan, amount, currency} = req.body
         const userId = req.user._id;
 
-        if (!planConfig[plan]) {
-            return res.status(400).json({error: "Invalid plan"});
-        }
+        const planKey = Object.keys(planConfig).find(
+            p => p.toLowerCase() === plan.toLowerCase()
+          );
+          if (!planKey) {
+            return res.status(400).json({ error: "Invalid plan" });
+          }
+         
+          
 
         if (!validCurrencies.includes(currency)) {
             return res.status(400).json({ error: 'Invalid currency' });
         }
 
-        const { min, max, duration, profitPercent } = planConfig[plan];
+        const { min, max, duration, profitPercent } = planConfig[planKey];
 
          if (amount < min || amount > max) {
           return res.status(400).json({ error: `Amount must be between ${min} and ${max}` });
