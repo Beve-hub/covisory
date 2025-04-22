@@ -90,7 +90,7 @@ router.post ('sell', verifyToken, async(req,res) => {
         return res.status(400).json({error:"Invalid Currency"})
     }
 
-    const investment = await investment.findOne({
+    const investment = await Investment.findOne({
         userId,
         plan,
         currency,
@@ -141,7 +141,7 @@ router.post ('sell', verifyToken, async(req,res) => {
 
 router.get('/balance', verifyToken, async(req,res) => {
     try {
-        const invBal = await investmentBalanceSchema.findOne({ userId: req.user._id });
+        const invBal = await InvestmentBalance.findOne({ userId: req.user._id });
         if (!invBal) {
           return res.status(404).json({ error: 'No investment balance found' });
         }
