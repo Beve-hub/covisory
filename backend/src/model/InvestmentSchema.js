@@ -55,3 +55,5 @@ const investmentSchema = new mongoose.Schema({
         }
     }]
 })
+
+module.exports = mongoose.model('InvestmentBalance', investmentSchema);

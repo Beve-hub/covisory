@@ -2,9 +2,10 @@ const { Router } = require('express');
 const router = Router();
 const Plan = require('../utils/planConfig');
 const Wallet = require('../model/Wallet');
-const investmentBalanceSchema = require('../model/InvestmentSchema');
-const investment = require('../model/InvestmentSchema');
+const InvestmentBalance = require('../model/InvestmentBalance');
+const Investment = require('../model/Investment'); // fixed
 const verifyToken = require('./verifyToken');
+
 
 
 const validCurrencies = ['NGN', 'USD', 'EUR', 'GBP'];

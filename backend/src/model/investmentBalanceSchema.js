@@ -18,4 +18,4 @@ const investmentBalanceSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('InvestmentBalance', investmentBalanceSchema);
+module.exports = mongoose.model('Investment', investmentBalanceSchema);
