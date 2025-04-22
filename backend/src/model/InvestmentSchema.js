@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const investmentSchema = new mongoose.Schema({
     userId: {
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
