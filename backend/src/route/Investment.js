@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const Plan = require('../utils/planConfig');
+const planConfig = require('../utils/planConfig');
 const Wallet = require('../model/Wallet');
 const InvestmentBalance = require('../model/investmentBalanceSchema');
 const Investment = require('../model/InvestmentSchema'); // fixed
@@ -15,7 +15,7 @@ router.post('/buy', verifyToken, async(req,res) => {
         const {plan, amount, currency} = req.body
         const userId = req.user._id;
 
-        if (!Plan(plan)) {
+        if (!planConfig(plan)) {
             return res.status(400).json({error: "Invalid plan"});
         }
 
@@ -23,7 +23,7 @@ router.post('/buy', verifyToken, async(req,res) => {
             return res.status(400).json({ error: 'Invalid currency' });
         }
 
-        const { min, max, duration, profitPercent } = Plan[plan];
+        const { min, max, duration, profitPercent } = planConfig[plan];
 
          if (amount < min || amount > max) {
           return res.status(400).json({ error: `Amount must be between ${min} and ${max}` });
@@ -82,7 +82,7 @@ router.post ('sell', verifyToken, async(req,res) => {
         const { currency, plan } = req.body;
     const userId = req.user._id;
 
-    if(!Plan[plan]) {
+    if(!planConfig[plan]) {
         return res.status(400).json({error: "Invalid plan"});
     }
 
