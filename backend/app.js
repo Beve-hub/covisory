@@ -7,6 +7,7 @@ const deposit = require('./src/route/deposit')
 const withdraw = require('./src/route/withdraw')
 const balance = require('./src/route/balance')
 const convert = require('./src/route/Conversion')
+const investment = require('./src/route/Investment')
 
 dotenv.config(); 
 
@@ -42,4 +43,5 @@ app.use('/api/deposit', deposit)
 app.use('/api/withdraw', withdraw)
 app.use('/api/balance', balance)
 app.use('/api/conversion', convert)
+app.use('/api/investment', investment)
 module.exports = app;

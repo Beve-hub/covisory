@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const Plan = require('../utils/planConfig');
-const wallet = require('../model/Wallet');
+const Wallet = require('../model/Wallet');
 const investmentBalanceSchema = require('../model/InvestmentSchema');
 const investment = require('../model/InvestmentSchema');
 const verifyToken = require('./verifyToken');
@@ -34,7 +34,7 @@ router.post('/buy', verifyToken, async(req,res) => {
            return res.status(400).json({ error: 'Insufficient wallet balance' });
          }
      
-         const existingInvestment = await Investment.findOne({ userId, currency, status: 'active' });
+         const existingInvestment = await investment.findOne({ userId, currency, status: 'active' });
          if (existingInvestment) {
            return res.status(400).json({ error: `You already have an active investment in ${currency}` });
          }
@@ -89,7 +89,7 @@ router.post ('sell', verifyToken, async(req,res) => {
         return res.status(400).json({error:"Invalid Currency"})
     }
 
-    const investment = await Investment.findOne({
+    const investment = await investment.findOne({
         userId,
         plan,
         currency,
@@ -140,7 +140,7 @@ router.post ('sell', verifyToken, async(req,res) => {
 
 router.get('/balance', verifyToken, async(req,res) => {
     try {
-        const invBal = await InvestmentBalance.findOne({ userId: req.user._id });
+        const invBal = await investmentBalanceSchema.findOne({ userId: req.user._id });
         if (!invBal) {
           return res.status(404).json({ error: 'No investment balance found' });
         }
