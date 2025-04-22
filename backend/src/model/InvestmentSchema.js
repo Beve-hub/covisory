@@ -8,7 +8,7 @@ const investmentSchema = new mongoose.Schema({
     },
     plan: {
         type: String,
-        enum: ['Standard', 'Institutional', 'Prime', 'Shareholder'],
+        enum: ['Emergency', 'Standard', 'Prime', 'Shareholder'],
         required: true
     },
     amount: {
@@ -17,7 +17,7 @@ const investmentSchema = new mongoose.Schema({
     },
     currency: {
         type: String,
-        enum: ['NGN', 'BTC', 'ETH', 'USDT', 'BNB'],
+        enum: ['NGN', 'USD', 'EUR', 'GBP'],
         required: true
     },
     dailyProfit: {
