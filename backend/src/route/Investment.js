@@ -21,7 +21,7 @@ router.post('/buy', verifyToken, async(req,res) => {
         const {plan, amount, currency} = req.body
         const userId = req.user._id;
 
-        if (!planConfig(plan)) {
+        if (!planConfig[plan]) {
             return res.status(400).json({error: "Invalid plan"});
         }
 
