@@ -8,10 +8,7 @@ const investmentBalanceSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  NGN: { type: Number, default: 0 },
-  USD: { type: Number, default: 0 },
-  EUR: { type: Number, default: 0 },
-  GBP: { type: Number, default: 0 },
+  NGN: { type: Map, of: Number,default: {} },
   updatedAt: {
     type: Date,
     default: Date.now
