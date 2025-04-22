@@ -55,7 +55,7 @@ function generateTransactionId(length = 20) {
     return id;
   }
   
-  depositSchema.pre('save', function (next) {
+  conversionSchema.pre('save', function (next) {
     if (!this.transactionId) {
       this.transactionId = generateTransactionId();
     }
