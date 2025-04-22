@@ -46,6 +46,9 @@ const investmentSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    transactionId: {
+        type: String,
+      },
     transactions: [{
         date: Date,
         amount: Number,
@@ -55,5 +58,21 @@ const investmentSchema = new mongoose.Schema({
         }
     }]
 })
+
+function generateTransactionId(length = 20) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let id = '';
+    for (let i = 0; i < length; i++) {
+      id += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return id;
+  }
+  
+  depositSchema.pre('save', function (next) {
+    if (!this.transactionId) {
+      this.transactionId = generateTransactionId();
+    }
+    next();
+  });
 
 module.exports = mongoose.model('InvestmentBalance', investmentSchema);

@@ -19,6 +19,9 @@ const conversionSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    transactionId: {
+        type: String,
+      },
     toCurrency: {
         type: String,
         enum: ['NGN','USD', 'EUR', 'GBP'],
@@ -42,5 +45,21 @@ const conversionSchema = new mongoose.Schema({
         default: Date.now
     }
 })
+
+function generateTransactionId(length = 20) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let id = '';
+    for (let i = 0; i < length; i++) {
+      id += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return id;
+  }
+  
+  depositSchema.pre('save', function (next) {
+    if (!this.transactionId) {
+      this.transactionId = generateTransactionId();
+    }
+    next();
+  });
 
 module.exports = mongoose.model('Conversion', conversionSchema);
