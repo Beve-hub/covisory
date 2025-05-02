@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { MdCancel,MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import Logo from "../assets/1.png"
+import Logo2 from "../assets/white.png"
 import { IoMenu } from "react-icons/io5";
 
 const navLinks = [
@@ -95,23 +96,32 @@ const Navbar = () => {
 
       {/* Main Navbar */}
       <div className="container mx-auto px-4 md:px-8 lg:px-16 py-3 flex items-center justify-between">
-        <NavLink to="/" className="text-lg font-bold">
-          <img src={Logo} alt="" className="w-[10rem]"/>
+        <NavLink to="/" >
+        {scroll ?   <div className="text-lg font-bold flex gap-2 items-center">
+        <img src={Logo} alt="" className="w-[3rem]"/>
+        <p className="font-bold text-[var(--primary-color)]">Glow Holdings</p>
+        </div> : <div className="text-lg font-bold flex gap-2 items-center">
+        <img src={Logo2} alt="" className="w-[3rem]"/>
+        <p className="font-bold text-[var(--text-white)]">Glow Holdings</p>
+        </div>}
+       
+        
+         
         </NavLink>
 
         <ul className="hidden md:flex space-x-14 items-center mx-auto"
-            style={{ color: scroll ? "var(--secondary-color)" : "var(--text-white)" }}>
+            style={{ color: scroll ? "var(--text-black)" : "var(--text-white)" }}>
           {navLinks.map((link) => (
             <li
               key={link.name}
-              style={{ color: scroll ? "var(--secondary-color)" : "var(--text-white)" }}
+              style={{ color: scroll ? "var(--text-black)" : "var(--text-white)" }}
               onMouseEnter={() => link.dropdown && setDropdown(link.name)}
               onMouseLeave={() => link.dropdown && setDropdown(null)}
             >
               {link.dropdown ? (
                 <>
                   <span className="flex items-center cursor-pointer"
-                  style={{ color: scroll ? "var(--secondary-color)" : "var(--text-white)" }}>
+                  style={{ color: scroll ? "var(--text-black)" : "var(--text-white)" }}>
                     {link.name} <MdOutlineKeyboardArrowDown />
                   </span>
                   {dropdown === link.name && (
@@ -136,7 +146,7 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     `nav-link ${isActive ? "active" : ""} text-[var(--text-white)]`
                   }
-                  style={{ color: scroll ? "var(--secondary-color)" : "var(--text-white)" }}
+                  style={{ color: scroll ? "var(--text-black)" : "var(--text-white)" }}
                 >
                   {link.name}
                 </NavLink>

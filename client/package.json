@@ -15,6 +15,7 @@
     "@tailwindcss/vite": "^4.0.12",
     "framer-motion": "^12.5.0",
     "leaflet": "^1.9.4",
+    "next": "^15.3.1",
     "react": "^19.0.0",
     "react-country-state-city": "^1.1.12",
     "react-dom": "^19.0.0",

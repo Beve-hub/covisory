@@ -33,7 +33,7 @@ const options = countries.map((country) => ({
     <section className="flex items-center justify-center w-screen h-full p-8 bg-[var(--primary-color)]">
       <div>
       <div className="flex justify-center my-4">
-      <img src={Logo} alt="" className="w-[15rem]"/>
+      <img src={Logo} alt="" className="w-[3rem]"/>
       </div>
       <div className="bg-white p-8 rounded-xl shadow-lg max-w-md w-full">
         <h3 className="text-2xl text-center text-[var(--text-black)] font-bold mb-2">Register</h3>

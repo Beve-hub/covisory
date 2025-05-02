@@ -33,7 +33,7 @@ const HeroPage = () => {
         <h1 className="text-3xl font-bold md:text-4xl">{images[currentIndex].text}</h1>
         <p className="text-xl md:text-2xl font-normal mt-4">{images[currentIndex].fix}</p>
         <div className="flex items-center justify-center gap-4 mt-6">
-          <button className="text-[--text-white] bg-[#071e63] rounded-md flex items-center gap-2 md:text-xl text-center py-2 px-4 " onClick={() => navigate('/login')}
+          <button className="text-[--text-white] bg-[var(--primary-color)] rounded-md flex items-center gap-2 md:text-xl text-center py-2 px-4 " onClick={() => navigate('/login')}
           >{images[currentIndex].bug} <RiArrowRightDoubleLine /></button>
           <p
             onClick={() => setIsModalOpen(true)}
