@@ -1,11 +1,10 @@
-import IMG from "../../../assets/bg2.jpg";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+
 
 const TopContact = () => {
   return (
     <section 
-    className="relative w-screen h-[25rem] pt-[10rem] grid items-center pt-16 pb-6 px-6 text-left md:text-left"
-    style={{ backgroundImage: `url(${IMG})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+    className="relative w-screen h-[25rem] pt-[10rem] bg-gradient-to-r from-[var(--layer-grade)] Via-[var(--primary-color)] to-[var(--layer-color)] grid items-center pt-16 pb-6 px-6 text-left md:text-left"
+
   >
     
     <div className="absolute inset-0 bg-black opacity-30"></div>

@@ -14,7 +14,7 @@ const Objective = () => {
      <div className="p-6">
         
         <h2 className="text-[var(--text-black)] text-center font-bold text-3xl py-4">
-        Covisory Holding ESG Objectives
+        Glow Holding ESG Objectives
         </h2>
         <div className="text-[var(--text-black)] flex justify-center items-center mt-4 text-sm leading-relaxed">
         {['enviroment','social','governance'].map((tab) => (

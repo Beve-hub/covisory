@@ -16,7 +16,7 @@ const Discovery = () => {
        
       </p>
       <h2 className="text-[var(--text-black)] font-bold text-3xl py-4">
-      Covisory Holdings Financial Perspective
+      Glow Holdings Financial Perspective
       </h2>
       <p className="text-[var(--text-black)] mt-4 text-sm leading-relaxed">
       Your asset manager will first have to determine your circumstances and needs, whether you contact us directly or through a qualified adviser.

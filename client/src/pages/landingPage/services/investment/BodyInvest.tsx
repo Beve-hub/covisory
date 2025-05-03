@@ -22,7 +22,7 @@ const BodyInvest = () => {
       Sustainable Growth Through Strategic Investments
       </h2>
       <p className="text-[var(--text-black)] mt-4 text-sm leading-relaxed">
-      At Covisory Holdings, we are committed to making wise investments that support the growth of emerging businesses while aligning with evolving environmental,
+      At Glow Holdings, we are committed to making wise investments that support the growth of emerging businesses while aligning with evolving environmental,
        social, and governance (ESG) priorities. By leveraging our own capital alongside that of global investment partners—including pension funds, sovereign wealth funds, 
        insurance companies, foundations, family offices, and high-net-worth individuals—we help investors achieve their financial goals for the benefit of their clients, families, and communities. <br />
         <br/>

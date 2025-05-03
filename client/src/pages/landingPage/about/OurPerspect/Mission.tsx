@@ -10,9 +10,9 @@ const Mission = () => {
 
     {/* Text Content */}
     <div className="p-6">
-      <p className="relative overflow-hidden border-[var(--primary-color)] font-bold text-lg border-l-4 text-[var(--text-white)] w-[20rem]
-         px-4 transition-all duration-300 group hover:text-[var(--text-white)] hover:bg-[var(--button-color)] before:absolute before:top-0 
-         before:left-0 before:w-0 before:h-full before:bg-[var(--primary-color)] before:transition-all before:duration-500 hover:before:w-full">
+    <p className="relative overflow-hidden border-[var(--text-white)] font-bold text-lg border-l-4 text-[var(--text-white)] w-[20rem]
+         px-4 transition-all duration-300 group hover:text-[var(--text-white)] hover:bg-[var(--text-white)] before:absolute before:top-0 
+         before:left-0 before:w-0 before:h-full before:bg-[var(--button-color)] before:transition-all before:duration-500 hover:before:w-full">
         
         <span className="relative z-10 transition-all duration-300 group-hover:text-[var(--text-white)]">
         How to grow business

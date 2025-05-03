@@ -30,10 +30,10 @@ const Holding = () => {
             </span>
           </p>
           <h2 className="text-[var(--text-black)] font-bold text-3xl py-4">
-          The Covisory Holdings ESG Sustainability
+          The Glow Holdings ESG Sustainability
           </h2>
           <p className="text-[var(--text-black)] mt-4 text-sm leading-relaxed">
-          Sustainability has been ingrained throughout the investment process at Covisory Holdings for well over a decade, 
+          Sustainability has been ingrained throughout the investment process at Glow Holdings for well over a decade, 
           and the company has an unwavering commitment to responsible investment. This commitment was inspired by the conviction 
           that a responsible investment strategy can produce net benefits for society and the environment in addition to maximizing 
           financial returns for investors.

@@ -9,11 +9,8 @@ import Team from './pages/landingPage/about/OurTeam/Team';
 import Member from './pages/landingPage/about/OurTeam/Member';
 import Investment from './pages/landingPage/services/investment/Investment';
 import Trade from './pages/landingPage/services/trade/Trade';
-import Strategies from './pages/landingPage/services/strategies/Strategies';
 import Contact from './pages/landingPage/contact/Contact';
-import Forex from './pages/landingPage/method/forex/Forex';
 import ESG from './pages/landingPage/method/ESG/ESG';
-import DI from './pages/landingPage/method/DI/DI';
 import Register from './pages/auth/Register';
 import Dashboard from './pages/dashboard/dashboard/Dashboard';
 import Deposit from './pages/dashboard/action/Deposit';
@@ -50,11 +47,8 @@ function App() {
        <Route path="/member" element={<Member/>}/>
        <Route path="/investment" element={<Investment/>}/>
        <Route path="/trade" element={<Trade/>}/>
-       <Route path="/strategy" element={<Strategies/>}/>
        <Route path="/contact" element={<Contact/>}/>
-       <Route path="/forex" element={<Forex/>}/>
        <Route path="/enviroment" element={<ESG/>}/>
-       <Route path="/diversity" element={<DI/>}/>
        <Route path='/deposit' element={<Deposit/>}/>
        <Route path='/transaction' element={<Transaction/>}/>
        <Route path='/withdraw' element={<Withdraw/>}/>

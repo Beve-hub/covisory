@@ -4,7 +4,6 @@ import Integration from "./Integration"
 import Objective from "./Objective"
 import Purpose from "./Purpose"
 import Respond from "./Respond"
-import Succes from "./Succes"
 import Sustain from "./Sustain"
 import TopES from "./TopES"
 
@@ -14,7 +13,6 @@ const ESG = () => {
       <TopES/>
       <Sustain/>
       <Holding/>
-      <Succes/>
       <Integration/>
       <Objective/>
       <Purpose/>

@@ -17,13 +17,13 @@ const Choose = () => {
         {/* Text Content */}
         <div>
           <p className="text-[var(--primary-color)] font-semibold text-md">
-            Why Choose Covisory Holdings?
+            Why Choose Glow Holdings?
           </p>
           <h2 className="text-[var(--text-black)] py-3 font-bold text-2xl sm:text-xl md:text-3xl leading-tight">
             Want to Be a Part of Our Team?
           </h2>
           <p className="text-[var(--gray-color)] text-md leading-relaxed">
-            At Covisory Holdings, we manage a diverse portfolio of highly recognized institutions, including endowments,
+            At Glow Holdings, we manage a diverse portfolio of highly recognized institutions, including endowments,
             foundations, public and private pension funds, financial firms, family offices, and sovereign entities.
             Our investment approach spans the entire risk/return spectrum, ensuring tailored solutions for each client.
          <br />

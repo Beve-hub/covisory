@@ -3,7 +3,7 @@ import IMG from "../../../../assets/clarity.jpg";
 
 const Clarity = () => {
   return (
-    <section className="w-screen bg-[var(--light-gray)] py-20">
+    <section className="w-screen bg-[var(--text-white)] py-20">
     <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
           {/* Text Content */}

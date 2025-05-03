@@ -31,7 +31,7 @@ const Account = () => {
           accountability throughout the firm
           </h2>
           <p className="text-[var(--text-black)] mt-4 text-sm leading-relaxed">
-          At Covisory Holdings, we foster ESG understanding and accountability throughout the firm. Our investment professionals are responsible for managing and instilling the guiding principles of our ESG policy across our portfolio companies. In addition, Covisory Holdings Consulting Group (RCG) is actively involved in addressing potential ESG risks during the private equity investment process and within the Covisory Holdings firm. Our Compliance team provides oversight and ensures that employees at Covisory Holdings adhere to our ESG policy.
+          At Glow Holdings, we foster ESG understanding and accountability throughout the firm. Our investment professionals are responsible for managing and instilling the guiding principles of our ESG policy across our portfolio companies. In addition, Glow Holdings Consulting Group (RCG) is actively involved in addressing potential ESG risks during the private equity investment process and within the Glow Holdings firm. Our Compliance team provides oversight and ensures that employees at Glow Holdings adhere to our ESG policy.
           </p>
         </div>
   

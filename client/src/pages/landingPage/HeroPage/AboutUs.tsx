@@ -39,11 +39,17 @@ const AboutUs = () => {
 
         {/* About Us Content */}
         <div className="px-4 text-center md:text-left">
-          <p className="relative overflow-hidden border-[var(--primary-color)] font-bold text-lg border-l-4 text-[var(--secondary-color)]
+        <p className="relative overflow-hidden border-[var(--primary-color)] font-bold text-lg border-l-4 text-[var(--primary-color)] w-[20rem]
          px-4 transition-all duration-300 group hover:text-[var(--text-white)] hover:bg-[var(--button-color)] before:absolute before:top-0 
-         before:left-0 before:w-0 before:h-full before:bg-[var(--primary-color)] before:transition-all before:duration-500 hover:before:w-full">Who we are</p>
+         before:left-0 before:w-0 before:h-full before:bg-[var(--primary-color)] before:transition-all before:duration-500 hover:before:w-full">
+        
+        <span className="relative z-10 transition-all duration-300 group-hover:text-[var(--text-white)]">
+        who we are
+        </span>
+       
+      </p>
 
-          <h2 className="text-[var(--text-black)] mb-4 text-2xl sm:text-2xl md:text-4xl font-bold">Welcome to Covisory Holdings</h2>
+          <h2 className="text-[var(--text-black)] mb-4 text-2xl sm:text-2xl md:text-4xl font-bold">Welcome to Glow Holdings</h2>
           <p className="mt-4 text-gray-500 text-sm sm:text-base">
             We help our clients achieve their most ambitious goals by putting the strategies of the most prosperous people, families, and institutions in the world into action through our knowledge and dedication.
             <br />

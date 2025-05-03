@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import IMG1 from "../../../assets/hero1.jpg";
+import IMG1 from "../../../assets/hero4.jpg";
 import IMG2 from "../../../assets/hero2.jpg";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";

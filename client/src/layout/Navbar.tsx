@@ -17,31 +17,9 @@ const navLinks = [
       { name: "Our Team", path: "/about/team" },
     ],
   },
-  {
-    name: "Services",
-    path: "#",
-    dropdown: [
-      { name: "Investment", path: "/investment" },
-      { name: "Trading", path: "/trade" },
-      { name: "Strategies", path: "/strategy" },
-     
-    ],
-  },
-  {
-    name: "Methodology",
-    path: "#",
-    dropdown: [
-      { name: "ESG", path: "/enviroment" },
-      { name: "Forex", path: "/forex" },
-      { name: "Diversity & Inclusion", path: "/diversity" },
-    ],
-  },
-  
-  {
-    
-    path: "/services",
-    
-  },
+  { name: "Investor", path: "/investment" },
+  { name: "Trading", path: "/trade" },
+  { name: "ESG", path: "/enviroment" },
   { name: "Contact", path: "/contact" },
 ];
 

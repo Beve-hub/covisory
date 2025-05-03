@@ -3,13 +3,13 @@ import IMG2 from "../../../../assets/confidence.webp"
 import IMG3 from "../../../../assets/secure.webp"
 
 const card = [
-    {icon:IMG, title:'Trusted by Investors', desc:'With a proven track record of success, Covisory Holdings has earned the trust of investors worldwide. Our transparent approach, expert insights, and consistent performance set us apart as a reliable investment partner.'},
+    {icon:IMG, title:'Trusted by Investors', desc:'With a proven track record of success, Glow Holdings has earned the trust of investors worldwide. Our transparent approach, expert insights, and consistent performance set us apart as a reliable investment partner.'},
     {icon: IMG2, title:'Invest With Confidence',desc:'We prioritize investor confidence by providing data-driven insights, risk assessment, and strategic financial planning. Our commitment to research-backed investments ensures long-term value creation.'},
     {icon: IMG3, title:'Secure Platform', desc:'Security is at the core of our operations. We utilize advanced technology and compliance measures to safeguard your investments, ensuring a seamless and protected investment experience.'},
 ]
 const Expert = () => {
   return (
-    <section className="w-screen bg-[var(--text-white)] py-20">
+    <section className="w-screen bg-[var(--light-gray)] py-20">
     <div className="max-w-6xl mx-auto">
  {/* Text Content */}
  <div className="p-6">
@@ -24,10 +24,10 @@ Our Expertise
        
       </p>
       <h2 className="text-[var(--text-black)] font-bold text-3xl py-4">
-      Why Invest With Covisory Holdings?
+      Why Invest With Glow Holdings?
       </h2>
       <p className="text-[var(--text-black)] mt-4 text-sm text-balance max-w-[50rem] leading-relaxed">
-      At Covisory Holdings, we provide a strategic investment approach that covers 
+      At Glow Holdings, we provide a strategic investment approach that covers 
       the entire risk/return spectrum, ensuring customized solutions that align with each client’s goals.
        Our philosophy is built on deep, data-driven research rather than speculation, allowing us to deliver 
        sustainable and informed investment strategies.
