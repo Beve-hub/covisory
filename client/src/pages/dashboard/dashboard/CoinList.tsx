@@ -1,49 +1,50 @@
-import { useEffect, useRef } from "react";
+import { GoDotFill } from "react-icons/go";
+import { IoMdArrowDropup } from "react-icons/io";
 
+interface ChartProps {
+  color: string;
+  key?: number;
+  label: string;
+  title?: string | number;
+  [key: string]: any;
+}
 
+const data = [
+  { title: 'Standard', value: 10, color: '#E38627' },
+  { title: 'Institutional', value: 15, color: '#C13C37' },
+  { title: 'Shareholder', value: 20, color: '#6A2135' },
+  { title: 'Prime', value: 13, color: '#FFC700' },
+];
 
-const GeckoCoinList = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-screener.js";
-      script.async = true;
-      script.innerHTML = JSON.stringify({
-        width: "100%",
-        height: "350",
-        defaultColumn: "overview",
-        screener_type: "crypto_mkt",
-        displayCurrency: "USD",
-        colorTheme: "light",
-        locale: "en",
-        isTransparent: true,
-      });
-      
-      if (containerRef.current) {
-        containerRef.current.innerHTML = "";
-        containerRef.current.appendChild(script);
-      }
-    }, []);
-  
-    return (
-        <div className="bg-[var(--card-color)] ">
-      <div className="tradingview-widget-container w-full h-full bg-transparent">
-        <div ref={containerRef} className="tradingview-widget-container__widget"></div>
-        <div className="text-center text-blue-500 mt-2">
-          <a
-            href="https://www.tradingview.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline"
-          >
-        
-          </a>
-        </div>
-      </div>
-      </div>
+const CoinList = () => {
+  const StatCard = ({ color, label, amount, percentage }:ChartProps) => (
+    <div className='bg-[var(--card-color)] items-center shadow-sm p-2 '>
+      <p className='flex items-center text-sm'>
+        <GoDotFill color={color} />
+        <span className='text-[var(--gray-color)] ml-1'>{label}</span>
+      </p>
+      <h2 className='font-bold text-md'>{amount}</h2>
+      <p className='flex items-center text-sm font-semibold'>
+        <IoMdArrowDropup color='#016119' />
+        <span className='text-[var(--success-color)] ml-1 '>{percentage}</span>
+      </p>
+    </div>
   );
-};
 
-export default GeckoCoinList;
+
+  return (
+     <div className='grid grid-cols-4 gap-4'>
+      {data.map((item, index) => (
+        <StatCard 
+          key={index} 
+          color={item.color} 
+          label={item.title} 
+          amount="$165.52K" 
+          percentage="25.20%" 
+        />
+      ))}
+    </div>
+  )
+}
+
+export default CoinList

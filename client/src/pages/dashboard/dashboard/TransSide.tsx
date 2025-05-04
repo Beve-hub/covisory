@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 const payment = [
     { serialId: 'CDYTMNA', amount: '4000', package: 'standard', date: '11/03/2025', wallet: 'BTC', method: 'Bitcoin', status: 'pending' },
@@ -25,110 +26,44 @@ interface TransCard {
 }
 
 const TransSide = () => {
-   const [currentPage, setCurrentPage] = useState(1);
-      const [selectedTransaction, setSelectedTransaction] = useState<TransCard|null>(null);
-      const transactionsPerPage = window.innerWidth < 768 ? 3 : 5;
-      const totalPages = Math.ceil(payment.length / transactionsPerPage);
-  
-      const indexOfLastTransaction = currentPage * transactionsPerPage;
-      const indexOfFirstTransaction = indexOfLastTransaction - transactionsPerPage;
-      const currentTransactions = payment.slice(indexOfFirstTransaction, indexOfLastTransaction);
-  
-      const handlePageChange = (pageNumber:number) => {
-          if (pageNumber >= 1 && pageNumber <= totalPages) {
-              setCurrentPage(pageNumber);
-          }
-      };
-  
-      return (
-        <div className='my-8 px-2'>
-        {/* Table View for Large Screens */}
-        <div className='w-full overflow-auto hidden md:block'>
-            <table className='w-full min-w-[60rem] bg-[var(--card-color)] rounded-lg p-4'>
-                <thead className='border-b-2 bg-[var(--secondary-color)]'>
-                    <tr>
-                        <th className='px-4 py-2 text-[var(--text-white)] text-left'>Serial ID</th>
-                        <th className='px-4 py-2 text-[var(--text-white)] text-left'>Amount</th>
-                        <th className='px-4 py-2 text-[var(--text-white)] text-left'>Package</th>
-                        <th className='px-4 py-2 text-[var(--text-white)] text-left'>Date</th>
-                        <th className='px-4 py-2 text-[var(--text-white)] text-left'>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {currentTransactions.map(transaction => (
-                        <tr key={transaction.serialId} className='border-b text-left'>
-                            <td className='px-4 py-4'>{transaction.serialId}</td>
-                            <td className='px-4 py-4'>${transaction.amount}</td>
-                            <td className='px-4 py-4'>{transaction.package}</td>
-                            <td className='px-4 py-4'>{transaction.date}</td>
-                            <td className='px-4 py-4 text-[var(--success-color)]'>{transaction.status}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-        
-        {/* Card View for Small Screens */}
-        <div className='block md:hidden'>
-            {currentTransactions.map(transaction => (
-                <div key={transaction.serialId} 
-                onClick={() => {
-                    console.log(transaction); // Debugging
-                    setSelectedTransaction(transaction);
-                }}
-                className='bg-[var(--light-gray)] p-4 mb-4 rounded-lg shadow cursor-pointer'
-            >
-            
-                   <div className='flex items-center'>
-                   <p><strong>Serial ID:</strong> {transaction.serialId}</p>
-                   <p><strong>Amount:</strong> ${transaction.amount}</p>
-                    </div> 
-                    <div className='flex items-center'>
-                    <p><strong>Package:</strong> {transaction.package}</p>
-                    <p><strong>Date:</strong> {transaction.date}</p>
-                    </div> 
-                    
-                    <p><strong>Status:</strong> <span className='text-[var(--success-color)]'>{transaction.status}</span></p>
-                </div>
-            ))}
-        </div>
-        
-        {/* Pagination */}
-        <div className='flex flex-wrap justify-start mt-4 gap-2'>
-            {currentPage > 1 && (
-                <button onClick={() => handlePageChange(currentPage - 1)} className='px-3 py-2 text-sm bg-gray-300 rounded-md'>
-                    Previous
-                </button>
-            )}
-            {Array.from({ length: totalPages }, (_, index) => (
-                <button key={index + 1} onClick={() => handlePageChange(index + 1)}
-                    className={`px-2 py-1 text-sm ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
-                    {index + 1}
-                </button>
-            ))}
-            {currentPage < totalPages && (
-                <button onClick={() => handlePageChange(currentPage + 1)} className='px-3 py-2 text-sm bg-gray-300 rounded-md'>
-                    Next
-                </button>
-            )}
+    const [selectedTransaction, setSelectedTransaction] = useState<TransCard | null>(null);
 
-            {/* Modal for Transaction Details */}
-        {selectedTransaction && (
-            <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4'>
-                <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w-md'>
-                    <h2 className='text-lg font-bold mb-4'>Transaction Details</h2>
-                    <p><strong>Serial ID:</strong> {selectedTransaction.serialId}</p>
-                    <p><strong>Amount:</strong> ${selectedTransaction.amount}</p>
-                    <p><strong>Package:</strong> {selectedTransaction.package}</p>
-                    <p><strong>Date:</strong> {selectedTransaction.date}</p>
-                    <p><strong>Status:</strong> {selectedTransaction.status}</p>
-                    <button className='mt-4 px-4 py-2 bg-red-500 text-white rounded-md' onClick={() => setSelectedTransaction(null)}>Close</button>
+    const currentTransactions = payment.slice(0,6);
+
+    return (
+        <div className='my-8 px-2 flex justify-center'>
+            <div className='bg-[var(--card-color)] rounded-lg p-8 w-full max-w-4xl'>
+                <div className='flex justify-between items-center'>
+                    <h2 className='text-md font-bold pb-6'>Latest Transaction</h2>
+                    <p className='bg-[var(--primary-color)] rounded-md p-2 text-[var(--text-white)]'>
+                        <IoIosArrowRoundForward size={20} />
+                    </p>
+                </div>
+                <div className='overflow-x-auto mt-6'>
+                    <table className='min-w-full table-auto text-center'>
+                        <thead className=''>
+                            <tr>
+                                <th className='px-4 py-2 text-[var(--text-black)] font-bold'>Serial ID</th>
+                                <th className='px-4 py-2 text-[var(--text-black)] font-bold'>Amount</th>
+                                <th className='px-4 py-2 text-[var(--text-black)] font-bold'>Package</th>
+                                <th className='px-4 py-2 text-[var(--text-black)] font-bold'>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody className=''>
+                            {currentTransactions.map((transaction) => (
+                                <tr key={transaction.serialId} className='border-b border-[var(--light-gray)]'>
+                                    <td className='px-4 py-2'>{transaction.serialId}</td>
+                                    <td className='px-4 py-2'>${transaction.amount}</td>
+                                    <td className='px-4 py-2'>{transaction.package}</td>
+                                    <p className='px-4  text-[var(--success-color)] bg-[var(--primary-light)] text-center mt-2'>{transaction.status}</p>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        )}
         </div>
-    </div>
-      );
-}
+    );
+};
 
-export default TransSide
+export default TransSide;

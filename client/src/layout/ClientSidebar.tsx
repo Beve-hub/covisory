@@ -10,10 +10,9 @@ import { HiWallet } from "react-icons/hi2";
 import { HiArchiveBoxArrowDown } from "react-icons/hi2";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
-import { FaUserCircle, FaUsers  } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import {useSlider} from "./Slider"
-import { IoWallet } from "react-icons/io5";
-import Logo from "../assets/iconwhite.png"
+import Logo from "../assets/1.png"
 
 
 const sidebar = [
@@ -35,12 +34,7 @@ const sidebar = [
   { name: "Withdrawal", path: "/withdraw", icon: <HiArchiveBoxArrowDown size={24} /> },
   { name: "Transaction", path: "/transaction", icon: <FaMoneyBillTransfer size={24} /> },
 
-  /*Admin Dashboard */
-  
-  { name: "Dashboard", path: "/adminDash", icon: <BiSolidDashboard  size={24} /> },
-  { name: "User", path: "/userClient", icon: <FaUsers  size={24} /> },
-  { name: "Transaction", path: "/adminTran", icon: <FaMoneyBillTransfer size={24} /> },
-  { name: "Wallet", path: "/adminWallet", icon: <IoWallet size={24} /> },
+ 
 ];
 
 const ClientSidebar = () => {
@@ -63,13 +57,15 @@ const ClientSidebar = () => {
       <div onClick={handleBar} className="fixed md:hidden ml-4 cursor-pointer">
         {nav ? "" : <IoMenu size={30} />}
       </div>
+
+
       <div
-        style={{ width: isOpen ? "200px" : "120px" }}
-        className="w-[230px] h-screen bg-[var(--secondary-color)] p-8 fixed z-50 shadow-lg sm:block hidden"
+        style={{ width: isOpen ? "200px" : "100px" }}
+        className="w-[230px] h-screen bg-[var(--light-gray)] p-8 fixed z-50 shadow-lg sm:block hidden"
       >
         <div className="flex p-2 items-center">
           <div onClick={() => navigate("/overview")} className="flex gap-2">
-            <img src={Logo} alt="" className="w-[8rem]"/>
+            <img src={Logo} alt="" className="w-[4rem] "/>
           </div>
           <div
            onClick={toggleSlider}
@@ -79,7 +75,7 @@ const ClientSidebar = () => {
           </div>
         </div>
 
-{/* sidebar body*/}
+       {/* sidebar body*/}
         <div className="mt-8">
           {sidebar.map((item, index) => (
             <div key={index}>
@@ -89,12 +85,12 @@ const ClientSidebar = () => {
                     className="flex items-center gap-2 py-3 cursor-pointer"
                     onClick={() => toggleDropdown(item.name)}
                   >
-                    <p className="text-[var(--text-white)]">{item.icon}</p>
-                    <p style={{ display: isOpen ? "block" : "none" }} className="text-[var(--text-white)]">
+                    <p className="text-[var(--text-black)]">{item.icon}</p>
+                    <p style={{ display: isOpen ? "block" : "none" }} className="text-[var(--text-black)]">
                       {item.name}
                     </p>
                     <MdOutlineKeyboardArrowRight
-                      className={`transition-transform ${dropdown === item.name ? "rotate-90" : ""} text-[var(--text-white)]`}
+                      className={`transition-transform ${dropdown === item.name ? "rotate-90" : ""} text-[var(--text-black)]`}
                     />
                   </div>
                   {dropdown === item.name && (
@@ -103,7 +99,7 @@ const ClientSidebar = () => {
                         <NavLink key={subIndex} to={subItem.path} className="block py-2 hover:bg-[var(--text-white)] rounded-md text-[var(--text-white)]">
                           <p className="flex items-center text-md  gap-2">
                             
-                            <span style={{ display: isOpen ? "block" : "none" }}>{subItem.name}</span>
+                            <span style={{ display: isOpen ? "block" : "none" }} className="text-[var(--text-black)]">{subItem.name}</span>
                           </p>
                         </NavLink>
                       ))}
@@ -111,12 +107,13 @@ const ClientSidebar = () => {
                   )}
                 </>
               ) : (
-                <NavLink to={item.path} className="flex items-center gap-2 py-3">
-                  {item.icon}
-                  <p style={{ display: isOpen ? "block" : "none" }} className="text-[var(--text-white)]">
+                <p className="flex items-center gap-2 py-3">
+                 <NavLink to={item.path} className={({isActive}) => `side-link ${isActive ? "active" : ""}`} >{item.icon}</NavLink>  
+                 <p style={{ display: isOpen ? "block" : "none" }} className="text-[var(--text-black)]">
                     {item.name}
                   </p>
-                </NavLink>
+                </p>
+
               )}
             </div>
           ))}

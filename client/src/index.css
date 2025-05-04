@@ -83,11 +83,40 @@ p {
 }
 
 .nav-link.active {
- 
   color: var(--secondary-color) ;
   border-radius: 8px;
   border-bottom: '2px var(--primary-color)' ;
 }
+
+.side-link {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  color: var(--text-black);
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.side-link:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.side-link.active {
+  background-color: var(--primary-color);
+  color: var(--text-white);
+}
+
+.side-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--secondary-color);
+}
+
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
