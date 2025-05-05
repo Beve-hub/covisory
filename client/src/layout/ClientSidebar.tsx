@@ -2,17 +2,17 @@ import { BiSolidDashboard } from "react-icons/bi";
 import { GiWallet } from "react-icons/gi";
 import { useState } from "react";
 import { NavLink,  useNavigate } from "react-router-dom";
-import { MdOutlineKeyboardArrowDown,MdOutlineKeyboardArrowRight, MdCancel,MdOutlineLogout, MdSettings } from "react-icons/md";
+import { MdOutlineKeyboardArrowDown,MdCancel,MdOutlineLogout, MdSettings } from "react-icons/md";
 import { FaPiggyBank } from "react-icons/fa6";
 import { IoMdArrowDropright, IoMdArrowDropleft } from "react-icons/io";
-import { IoIosWallet } from "react-icons/io";
-import { HiWallet } from "react-icons/hi2";
+
 import { HiArchiveBoxArrowDown } from "react-icons/hi2";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
 import {useSlider} from "./Slider"
 import Logo from "../assets/1.png"
+import { FaExchangeAlt } from "react-icons/fa";
 
 
 const sidebar = [
@@ -23,15 +23,12 @@ const sidebar = [
   },
   {
     name: "Invest",
-    path: "#",
-    icon: <GiWallet size={24} />,
-    dropdown: [
-      { name: "Pacakage", path: "/package", icon: <HiWallet  /> },
-      { name: "My Investment", path: "/myinvestment", icon: <IoIosWallet /> },
-    ],
+    path: "/package",
+    icon: <GiWallet size={24} />
   },
   { name: "Deposit", path: "/deposit", icon: <FaPiggyBank size={24} /> },
   { name: "Withdrawal", path: "/withdraw", icon: <HiArchiveBoxArrowDown size={24} /> },
+  { name: "Conversion", path: "/convert", icon: <FaExchangeAlt size={24} /> },
   { name: "Transaction", path: "/transaction", icon: <FaMoneyBillTransfer size={24} /> },
 
  
@@ -41,13 +38,7 @@ const ClientSidebar = () => {
   const {isOpen, toggleSlider} = useSlider();
   const [nav, setNav] = useState(false);
   const [down, setDown] = useState(false);
-  const [dropdown, setDropdown] = useState<string | null>(null);
   const navigate = useNavigate();
-
- 
-  const toggleDropdown = (name: string) => {
-    setDropdown(dropdown === name ? null : name);
-  };
   const handleBar = () => setNav(!nav);
   const handleDown = () => setDown(!down)
 
@@ -79,34 +70,7 @@ const ClientSidebar = () => {
         <div className="mt-8">
           {sidebar.map((item, index) => (
             <div key={index}>
-              {item.dropdown ? (
-                <>
-                  <div
-                    className="flex items-center gap-2 py-3 cursor-pointer"
-                    onClick={() => toggleDropdown(item.name)}
-                  >
-                    <p className="text-[var(--text-black)]">{item.icon}</p>
-                    <p style={{ display: isOpen ? "block" : "none" }} className="text-[var(--text-black)]">
-                      {item.name}
-                    </p>
-                    <MdOutlineKeyboardArrowRight
-                      className={`transition-transform ${dropdown === item.name ? "rotate-90" : ""} text-[var(--text-black)]`}
-                    />
-                  </div>
-                  {dropdown === item.name && (
-                    <div className=" ml-4">
-                      {item.dropdown.map((subItem, subIndex) => (
-                        <NavLink key={subIndex} to={subItem.path} className="block py-2 hover:bg-[var(--text-white)] rounded-md text-[var(--text-white)]">
-                          <p className="flex items-center text-md  gap-2">
-                            
-                            <span style={{ display: isOpen ? "block" : "none" }} className="text-[var(--text-black)]">{subItem.name}</span>
-                          </p>
-                        </NavLink>
-                      ))}
-                    </div>
-                  )}
-                </>
-              ) : (
+              
                 <p className="flex items-center gap-2 py-3">
                  <NavLink to={item.path} className={({isActive}) => `side-link ${isActive ? "active" : ""}`} >{item.icon}</NavLink>  
                  <p style={{ display: isOpen ? "block" : "none" }} className="text-[var(--text-black)]">
@@ -114,7 +78,6 @@ const ClientSidebar = () => {
                   </p>
                 </p>
 
-              )}
             </div>
           ))}
         </div>
@@ -134,28 +97,11 @@ const ClientSidebar = () => {
           </div>
           <ul className="mt-4 space-y-4">
             {sidebar.map((link) => (
-              <li key={link.name}>
-                {link.dropdown ? (
-                  <details>
-                    <summary className="flex items-center cursor-pointer">
-                      <p className=" px-4  text-[var(--text-black)] flex items-center gap-2"> {link.icon} <span>{link.name} </span> <MdOutlineKeyboardArrowDown /> </p>
-                    </summary>
-                    <ul className="ml-4 mt-2 space-y-2">
-                      {link.dropdown.map((item) => (
-                        <li key={item.name}>
-                          <NavLink to={item.path} className="block px-4 py-2 hover:bg-gray-100">
-                             <p className="flex gap-2 items-center text-[var(--text-black)]"> {item.icon}<span>{item.name}</span></p>
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                ) : (
-                  <NavLink to={link.path} className="block px-4 py-2 text-[var(--text-black)] hover:bg-gray-100">
-                    <p className="text-[var(--text-black)] flex items-center gap-2"> {link.icon} <span>{link.name}</span></p>
-                  </NavLink>
-                )}
-              </li>
+               <ul key={link.name} className="ml-4 mt-2 space-y-2">
+               <NavLink to={link.path} className="block px-4 py-2 text-[var(--text-black)] hover:bg-gray-100">
+               <p className="text-[var(--text-black)] flex items-center gap-2"> {link.icon} <span>{link.name}</span></p>
+             </NavLink>
+               </ul>
             ))}
           </ul>
              {/* User Options */}

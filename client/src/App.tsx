@@ -28,6 +28,7 @@ import Users from './pages/dashboard/users/Users';
 import AdminTran from './pages/dashboard/adminTran/AdminTran';
 import AdminWallet from './pages/dashboard/adminWallet/AdminWallet';
 import AdminDash from './pages/dashboard/adminDash/AdminDash';
+import Convert from './pages/dashboard/convert/Convert';
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
        <Route path='/transaction' element={<Transaction/>}/>
        <Route path='/withdraw' element={<Withdraw/>}/>
        <Route path='/package' element={<Package/>}/>
+       <Route path='/convert' element={<Convert/>}/>
        <Route path='/depositSummary' element={<DepositSumary/>}/>
        <Route path='/depositCheckout' element={<DepositCheckout/>}/>
        <Route path='/myinvestment' element={<InvestTransaction/>}/>
@@ -71,3 +73,4 @@ function App() {
 }
 
 export default App
+  

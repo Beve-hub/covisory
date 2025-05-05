@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { FaRegCopy, FaWallet,FaCoins  } from "react-icons/fa";
-import { FaChartSimple } from "react-icons/fa6";
-import { GrTransaction } from "react-icons/gr";
+import { FaRegCopy} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { HiMiniArrowTrendingUp } from "react-icons/hi2";
 
 
 
@@ -32,9 +31,15 @@ const TopDash = () => {
             <div className="w-full bg-[var(--card-color)] rounded-lg p-8 md:col-span-4">
                 
 
-                <div className="pb-6">
-                <p className="font-bold text-md text-[var(--gray-color)] ">Portfolio</p>
-                <h2 className="font-bold text-3xl ">$6000</h2>
+                <div className="flex justify-between pb-6">
+                  <div>
+                  <p className="font-bold text-md text-[var(--gray-color)] ">Portfolio</p>
+                  <h2 className="font-bold text-3xl ">$6000</h2>
+                  </div>
+                  <p className='flex items-center text-sm font-semibold'>
+                          <HiMiniArrowTrendingUp  color='#016119' />
+                          <span className='text-[var(--success-color)] ml-1 '>+567k</span>
+                        </p>
                 </div>
                 <div className="flex justify-start  items-center  gap-2">
                     <button 
