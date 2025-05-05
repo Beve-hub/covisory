@@ -23,7 +23,7 @@ const sidebar = [
   },
   {
     name: "Invest",
-    path: "/package",
+    path: "/investDashboard",
     icon: <GiWallet size={24} />
   },
   { name: "Deposit", path: "/deposit", icon: <FaPiggyBank size={24} /> },

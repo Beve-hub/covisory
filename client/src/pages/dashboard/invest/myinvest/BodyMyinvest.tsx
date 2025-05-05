@@ -41,7 +41,7 @@ const BodyMyinvest = () => {
       };
   
       return (
-          <div className='my-8 px-2'>
+          <div className='my-2 px-2'>
               {/* Table View for Large Screens */}
               <div className='w-full overflow-auto hidden md:block'>
                   <table className='w-full min-w-[60rem] bg-[var(--card-color)] rounded-lg p-4'>

@@ -8,16 +8,16 @@ interface Plan {
   }
   
   const plans: Record<string, Plan> = {
-    basic: { min: 100, max: 5000, interest: "2%" },
-    standard: { min: 5001, max: 10000, interest: "4.5%" },
-    premium: { min: 10001, max: 200000, interest: "7.5%" },
+    standard: { min: 100, max: 5000, interest: "2%" },
+    institutional: { min: 5001, max: 10000, interest: "4.5%" },
+    prime: { min: 10001, max: 200000, interest: "7.5%" },
     shareholder: { min: 200001, max: 50000, interest: "11%" },
   };
 
 
 
 const BodyDeposit = () => {
-    const [plan, setPlan] = useState("basic");
+    const [plan, setPlan] = useState("standard");
     const [amount, setAmount] = useState(0);
     const [wallet, setWallet] = useState("wallet1");
     const navigate = useNavigate()

@@ -29,6 +29,7 @@ import AdminTran from './pages/dashboard/adminTran/AdminTran';
 import AdminWallet from './pages/dashboard/adminWallet/AdminWallet';
 import AdminDash from './pages/dashboard/adminDash/AdminDash';
 import Convert from './pages/dashboard/convert/Convert';
+import InvestDash from './pages/dashboard/invest/InvestDash';
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
        <Route path='/depositSummary' element={<DepositSumary/>}/>
        <Route path='/depositCheckout' element={<DepositCheckout/>}/>
        <Route path='/myinvestment' element={<InvestTransaction/>}/>
+       <Route path='/investDashboard' element={<InvestDash/>}/>
        <Route path='/withdrawSummary' element={<WithdrawSummary/>}/>
        <Route path='/withdrawCheckout' element={<WithdrawCheckout/>}/>
        <Route path='/settings' element={<Setting/>}/>
