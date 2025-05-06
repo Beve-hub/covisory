@@ -105,7 +105,6 @@ const BodyPackage = () => {
         </div>
       </div>
 
-
       {showModal && selectedPlan && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
           <form onSubmit={handleFormSubmit} className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4">

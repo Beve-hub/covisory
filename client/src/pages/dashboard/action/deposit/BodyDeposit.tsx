@@ -74,24 +74,11 @@ const BodyDeposit = () => {
               onChange={(e) => setWallet(e.target.value)}
               className="w-full p-2 border rounded-lg"
             >
-              <option value="wallet1">BTC</option>
-              <option value="wallet2">ETH</option>
-              <option value="wallet3">USDT</option>
+              <option value="wallet1">NGN</option>
             </select>
           </div>
 
-          <div>
-            <label className="block text-gray-700">Select Network:</label>
-            <select
-              value={wallet}
-              onChange={(e) => setWallet(e.target.value)}
-              className="w-full p-2 border rounded-lg"
-            >
-              <option value="wallet1">Bitcoin</option>
-              <option value="wallet2">TRC20</option>
-              <option value="wallet3">ERC30</option>
-            </select>
-          </div>
+         
   
           <button 
             type="submit" 

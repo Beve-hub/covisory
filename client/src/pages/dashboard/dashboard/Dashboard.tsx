@@ -1,7 +1,7 @@
 import BodyDash from "./BodyDash"
 import TopDash from "./TopDash"
 import {useSlider} from "../../../layout/Slider"
-import CoinList from "./CoinList";
+import CurrencyCard from "../../../utills/reusable/CurrencyCard";
 
 
 
@@ -14,7 +14,7 @@ const Dashboard = () => {
       marginTop: '4rem'
     }}>
       <TopDash/>
-      <CoinList/>
+      <CurrencyCard/>
       <BodyDash/>
       
     </div>
